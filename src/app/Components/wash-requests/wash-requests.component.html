@@ -1,0 +1,29 @@
+<table class="table table-hover table-responsive mt-5">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Order ID</th>
+            <th scope="col">User ID</th>
+            <th scope="col">Time of Wash</th>
+            <th scope="col">Date of Wash</th>
+            <th scope="col">Location</th>
+            <th scope="col">Package Type</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let row of requests, let i=index">
+            <th scope="row">{{i}}</th>
+            <td>{{row.orderId}}</td>
+            <td>{{row.userId}}</td>
+            <td>{{row.timeOfWash}}</td>
+            <td>{{row.dateOfWash}}</td>
+            <td>{{row.location}}</td>
+            <td>{{row.washTypeId}}</td>
+        </tr>
+    </tbody>
+</table>
+
+<div *ngIf="!requests || requests.length == 0" class="container d-flex flex-column justify-content-center">
+    <div><h1> No requests to display</h1></div>
+    <div><small>You are all up-to date :)</small></div>
+</div>
