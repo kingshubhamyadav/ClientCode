@@ -1,0 +1,36 @@
+<div  style="padding-top: 50px" class="container">
+  <div class="row main">
+    <div class="main-login main-center">
+      <form class="form-horizontal" method="post" action="#">
+        <div class="form-group">
+          <label style="padding-left: 300px" for="username" class="cols-sm-2 control-label">Username</label>
+          <div style="padding-left: 300px;padding-right :300px" class="cols-sm-10">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+              <input type="text" [(ngModel)]="user.username" name="username"class="form-control" placeholder="Enter your Username"/>
+            </div>
+          </div>
+        </div>
+
+        <div  style="padding-top: 20px" class="form-group">
+          <label style="padding-left: 300px" for="password" class="cols-sm-2 control-label">Password</label>
+          <div  style="padding-left: 300px;padding-right :300px" class="cols-sm-10">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+              <input type="password" [(ngModel)]="user.password" name="password" class="form-control"   placeholder="Enter your Password"/>
+            </div>
+          </div>
+        </div>
+
+        <div style="padding-left: 300px;padding-top: 10px" class="form-group ">
+          <button type="button" (click)="login(user)" class="btn btn-primary btn-lg btn-block login-button">Sign </button>
+
+        </div>
+        <div style="padding-left: 300px;padding-top: 10px" class="form-group ">
+           <button  type="button" (click)="weather()" class="btn btn-primary btn-lg btn-block login-button">Get </button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
