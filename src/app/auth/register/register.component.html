@@ -1,0 +1,68 @@
+<div  style="padding-top: 10px" class="container">
+  <div class="row main">
+    <div class="main-login main-center">
+      <form class="form-horizontal" method="post" action="#">
+        <div class="form-group">
+          <label  for="firstName" class="cols-sm-2 control-label">First Name</label>
+          <div  class="cols-sm-10">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+              <input type="text" [(ngModel)]="user.firstName" name="firstName"class="form-control" placeholder="Enter your First Name"/>
+            </div>
+          </div>
+        </div>
+
+        <div  style="padding-top: 20px" class="form-group">
+          <label  for="lastName" class="cols-sm-2 control-label">Last Name</label>
+          <div   class="cols-sm-10">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+              <input type="text" [(ngModel)]="user.lastName" name="lastName" class="form-control"   placeholder="Enter your Last Name"/>
+            </div>
+          </div>
+        </div>
+        <div  style="padding-top: 20px" class="form-group">
+          <label  for="User Name" class="cols-sm-2 control-label">User Name</label>
+          <div   class="cols-sm-10">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+              <input type="text" [(ngModel)]="user.userName" name="userName" class="form-control"   placeholder="Enter your User Name"/>
+            </div>
+          </div>
+        </div>
+        <div  style="padding-top: 20px" class="form-group">
+          <label  for="email" class="cols-sm-2 control-label">Email</label>
+          <div   class="cols-sm-10">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+              <input type="text" [(ngModel)]="user.email" name="email" class="form-control"   placeholder="Enter your Email"/>
+            </div>
+          </div>
+        </div>
+        <div  style="padding-top: 20px" class="form-group">
+          <label for="password" class="cols-sm-2 control-label">Password</label>
+          <div   class="cols-sm-10">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+              <input type="password" [(ngModel)]="user.password" name="password" class="form-control"   placeholder="Enter your Password"/>
+            </div>
+          </div>
+        </div>
+        <div  style="padding-top: 20px" class="form-group">
+          <label  for="phone" class="cols-sm-2 control-label">Phone</label>
+          <div   class="cols-sm-10">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+              <input type="text" [(ngModel)]="user.phone" name="phone" class="form-control"   placeholder="Enter your Phone Number"/>
+            </div>
+          </div>
+        </div>
+
+        <div style="padding-top: 10px" class="form-group ">
+          <button type="button" (click)="register(user)" class="btn btn-primary btn-lg btn-block login-button">Register</button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
