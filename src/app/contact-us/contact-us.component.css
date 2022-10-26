@@ -1,0 +1,430 @@
+body {
+
+
+
+  margin: 0;
+
+  padding: 0;
+
+  background-color: #fff;
+
+  padding-bottom: 100px;
+
+}
+
+*{
+
+  margin-top: 2.5%;
+
+  background-color: #fff;
+
+}
+
+
+
+#contact {
+
+  width: 100%;
+
+  height: 100%;
+
+}
+
+
+
+.section-header {
+
+  text-align: center;
+
+  margin: 0 auto;
+
+  padding: 40px 0;
+
+  font: 300 60px 'Oswald', sans-serif;
+
+  color: black;
+
+  text-transform: uppercase;
+
+  letter-spacing: 6px;
+
+}
+
+
+
+.contact-wrapper {
+
+  display: flex;
+
+  flex-direction: row;
+
+  justify-content: space-between;
+
+  margin: 0 auto;
+
+  padding: 20px;
+
+  position: relative;
+
+  max-width: 840px;
+
+}
+
+
+
+/* Left contact page */
+
+.form-horizontal {
+
+  /*float: left;*/
+
+  max-width: 400px;
+
+  font-family: 'Lato';
+
+  font-weight: 400;
+
+  padding-right: 15%;
+
+}
+
+
+
+.form-control{
+
+
+
+  width: 100%;
+
+}
+
+.textarea {
+
+  max-width: 400px;
+
+  background-color: #fff;
+
+  color: #000;
+
+  letter-spacing: 1px;
+
+}
+
+
+
+.send-button {
+
+  margin-top: 15px;
+
+  height: 34px;
+
+  width: 400px;
+
+  color: #000;
+
+
+
+
+
+}
+
+
+
+
+
+
+
+.send-text {
+
+  display: block;
+
+  margin-top: 7px;
+
+  font: 700 12px 'Lato', sans-serif;
+
+  letter-spacing: 2px;
+
+}
+
+
+
+
+
+
+
+/* Begin Right Contact Page */
+
+.direct-contact-container {
+
+
+
+  max-width: 400px;
+
+}
+
+
+
+/* Location, Phone, Email Section */
+
+.contact-list {
+
+  list-style-type: none;
+
+  margin-left: -30px;
+
+  padding-right: 20px;
+
+}
+
+
+
+.list-item {
+
+  line-height: 4;
+
+  color: #000;
+
+}
+
+
+
+.contact-text {
+
+  font: 300 18px 'Lato', sans-serif;
+
+  letter-spacing: 1.9px;
+
+  color: #000;
+
+}
+
+
+
+.place {
+
+  margin-left: 62px;
+
+}
+
+
+
+.phone {
+
+  margin-left: 56px;
+
+}
+
+
+
+.gmail {
+
+  margin-left: 53px;
+
+}
+
+
+
+.contact-text a {
+
+  color: #000;
+
+  text-decoration: none;
+
+  transition-duration: 0.2s;
+
+}
+
+
+
+.contact-text a:hover {
+
+  color: #000;
+
+  text-decoration: none;
+
+}
+
+
+
+
+
+/* Social Media Icons */
+
+.social-media-list {
+
+  position: relative;
+
+  font-size: 22px;
+
+  text-align: center;
+
+  width: 100%;
+
+  margin: 0 auto;
+
+  padding: 0;
+
+}
+
+
+
+.social-media-list li a {
+
+  color: #000;
+
+}
+
+
+
+.social-media-list li {
+
+  position: relative;
+
+  display: inline-block;
+
+  height: 60px;
+
+  width: 60px;
+
+  margin: 10px 3px;
+
+  line-height: 60px;
+
+  border-radius: 50%;
+
+  color: #000;
+
+  background-color: rgb(27,27,27);
+
+  cursor: pointer;
+
+  transition: all .2s ease-in-out;
+
+}
+
+
+
+.social-media-list li:after {
+
+  content: '';
+
+  position: absolute;
+
+  top: 0;
+
+  left: 0;
+
+  width: 60px;
+
+  height: 60px;
+
+  line-height: 60px;
+
+  border-radius: 50%;
+
+  opacity: 0;
+
+  box-shadow: 0 0 0 1px #000;
+
+  transition: all .2s ease-in-out;
+
+}
+
+
+
+.social-media-list li:hover {
+
+  background-color: #000;
+
+}
+
+
+
+.social-media-list li:hover:after {
+
+  opacity: 1;
+
+  transform: scale(1.12);
+
+  transition-timing-function: cubic-bezier(0.37,0.74,0.15,1.65);
+
+}
+
+
+
+
+
+
+
+.copyright {
+
+  font: 200 14px 'Oswald', sans-serif;
+
+  color: #555;
+
+  letter-spacing: 1px;
+
+  text-align: center;
+
+}
+
+
+
+hr {
+
+  /* border-color: rgba(255,255,255,.6); */
+
+  border-color: #000;
+
+}
+
+
+
+/* Begin Media Queries*/
+
+@media screen and (max-width: 850px) {
+
+  .contact-wrapper {
+
+    display: flex;
+
+    flex-direction: column;
+
+  }
+
+  .direct-contact-container, .form-horizontal {
+
+    margin: 0 auto;
+
+  }
+
+
+
+  .direct-contact-container {
+
+    margin-top: 60px;
+
+    max-width: 300px;
+
+  }
+
+  .social-media-list li {
+
+    height: 60px;
+
+    width: 60px;
+
+    line-height: 60px;
+
+  }
+
+  .social-media-list li:after {
+
+    width: 60px;
+
+    height: 60px;
+
+    line-height: 60px;
+
+  }
+}

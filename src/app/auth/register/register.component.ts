@@ -8,7 +8,7 @@ import { AuthService } from 'src/app/service/auth.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  title='Register'
+  title='Register';
   user= new UserRegister();
   constructor(private authService:AuthService) { }
 

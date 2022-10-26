@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { User } from '../models/user';
 import { UserRegister } from '../models/userRegister';
 
@@ -9,6 +10,7 @@ import { UserRegister } from '../models/userRegister';
 })
 export class AuthService {
 
+  baseApiUrl:string=environment.apiUrl;
   constructor(private http: HttpClient) { }
 
   public register(user: UserRegister): Observable<any>{ //remove <any> afterwards

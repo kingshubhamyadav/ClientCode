@@ -12,6 +12,8 @@ import { WasherOrdersComponent } from './Components/washer-orders/washer-orders.
 import { WasherProfileComponent } from './Components/washer-profile/washer-profile.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
+import { OrderHistoryComponent } from './customer/order-history/order-history.component';
+import { InvoiceComponent } from './customer/invoice/invoice.component';
 
 const routes: Routes = [
   //customer
@@ -20,6 +22,8 @@ const routes: Routes = [
   {path:'register',component:RegisterComponent},
   {path:'login',component:LoginComponent},
   {path:'checkout',component:CheckoutComponent},
+  {path:'orderHistory',component:OrderHistoryComponent},
+  {path:'invoice',component:InvoiceComponent},
 
   {path:'aboutUs',component:AboutUsComponent},
   {path:'contactUs',component:ContactUsComponent},
@@ -40,5 +44,6 @@ const routes: Routes = [
 })
 export class AppRoutingModule { }
 export const routingComponents=[HomeComponent,RegisterComponent,LoginComponent,CheckoutComponent,ContactUsComponent,AboutUsComponent,
+  OrderHistoryComponent,
   WasherDashboardComponent, WasherProfileComponent, WashRequestsComponent, InvoiceGenerationComponent, WasherOrdersComponent, PageNotFoundComponent]
 
