@@ -11,6 +11,9 @@ import { InvoiceGenerationComponent } from './Components/invoice-generation/invo
 import { WasherOrdersComponent } from './Components/washer-orders/washer-orders.component';
 import { WasherProfileComponent } from './Components/washer-profile/washer-profile.component';
 import { PageNotFoundComponent } from './Components/page-not-found/page-not-found.component';
+import { CurrentOrdersComponent } from './Components/current-orders/current-orders.component';
+import { PastOrdersComponent } from './Components/past-orders/past-orders.component';
+import { NavbarComponent } from './Components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,10 @@ import { PageNotFoundComponent } from './Components/page-not-found/page-not-foun
     InvoiceGenerationComponent,
     WasherOrdersComponent,
     WasherProfileComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    CurrentOrdersComponent,
+    PastOrdersComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

@@ -11,5 +11,4 @@ export class WasherOrdersComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 }

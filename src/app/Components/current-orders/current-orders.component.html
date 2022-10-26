@@ -4,34 +4,29 @@
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Order ID</th>
-                <th scope="col">Customer Name</th>
+                <th scope="col">UserName</th>
                 <th scope="col">Time of Wash</th>
                 <th scope="col">Date of Wash</th>
                 <th scope="col">Location</th>
                 <th scope="col">Package Type</th>
-                <th scope="col">Action</th>
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let row of requests, let i=index" class="row{{i}}">
-                <th scope="row">{{i}}</th>
+            <tr *ngFor="let row of orders, let i=index">
+                <th scope="row">{{i + 1}}</th>
                 <td>{{row.orderId}}</td>
                 <td>{{row.firstName | uppercase}} {{row.lastName | uppercase}}</td>
                 <td>{{row.timeOfWash}}</td>
                 <td>{{row.dateOfWash}}</td>
                 <td>{{row.location}}</td>
                 <td>{{row.category}}</td>
-                <td>
-                    <button (click)="accept(row)" type="button" class="btn btn-success">Accept</button> &nbsp; &nbsp;
-                    <button (click)="decline('row'+i)" type="button" class="btn btn-danger">Decline</button>
-                </td>
             </tr>
         </tbody>
     </table>
 
-    <div *ngIf="!requests || requests.length == 0" class="container d-flex flex-column justify-content-center">
+    <div *ngIf="!orders || orders.length == 0" class="container d-flex flex-column justify-content-center">
         <div>
-            <h1> No requests to display</h1>
+            <h1> No orders to display</h1>
         </div>
         <div><small>You are all up-to date :)</small></div>
     </div>
