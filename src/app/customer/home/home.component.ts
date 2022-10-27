@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { washType } from 'src/app/models/washType';
+import { CustomerService } from 'src/app/service/customer.service';
+
 
 @Component({
   selector: 'app-home',
@@ -7,9 +10,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  services:washType[]=[];
+
+  constructor(private customerService:CustomerService) { }
 
   ngOnInit(): void {
+    this.customerService.getAllWashType()
+    .subscribe({
+      next:(services)=>{
+       this.services=services;
+      },
+      error:(response)=>{
+        console.log(response);
+      }
+    })
   }
 
 }

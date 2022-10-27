@@ -1,1 +1,15 @@
-<p>home works!</p>
+<!-- Home page for customer profile -->
+<!-- Services that are provided -->
+<div class="row col d-flex justify-content-center mt-3" *ngFor="let service of services">
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">{{service.catogries}}</h5>
+        <p class="card-text">{{service.discription}}</p>
+        <button type="button" data-bs-toggle="modal"
+        data-bs-target="#fillDetailModal"  class="btn btn-primary">{{service.charges}}</button>
+      </div>
+    </div>
+  </div>
+</div>
+

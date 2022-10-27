@@ -1,0 +1,41 @@
+<div class="container">
+  <table class="table table-hover table-responsive mt-5">
+      <thead class="thead-dark">
+          <tr>
+              <th scope="col">#</th>
+              <th scope="col">Time Of Wash</th>
+              <th scope="col">Date Of Wash</th>
+              <th scope="col">Location</th>
+              <th scope="col">Amount Paid</th>
+              <th scope="col">Status</th>
+              <th scope="col">Download</th>
+          </tr>
+
+      </thead>
+      <tbody>
+        <!--  -->
+          <tr *ngFor="let row of orders, let i=index">
+            <!-- order -->
+              <th scope="row">{{i+1}}</th>
+              <td>{{row.timeOfWash}}</td>
+              <td>{{row.dateOfWash}}</td>
+              <td>{{row.location}}</td>
+              <td>{{row.amountPaid}}</td>
+              <td>{{row.totalDiscount}}</td>
+              <td>
+                <!-- (click)="fill(row)" -->
+                  <button  type="button" class="btn btn-success" data-bs-toggle="modal"
+                      data-bs-target="#exampleModal">Complete Wash</button>
+              </td>
+          </tr>
+
+      </tbody>
+  </table>
+
+  <div *ngIf="!orders || orders.length == 0"  class="container d-flex flex-column justify-content-center">
+      <div>
+          <h1> No orders to display</h1>
+      </div>
+  </div>
+</div>
+

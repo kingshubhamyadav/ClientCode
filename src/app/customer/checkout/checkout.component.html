@@ -1,1 +1,81 @@
-<p>checkout works!</p>
+<div class="container" style="padding-top: 30px">
+<div class="row">
+  <div class="col-75">
+    <div class="container">
+      <form action="/action_page.php">
+
+        <div class="row">
+          <div class="col-50">
+            <h3> Order Detail</h3>
+            <input type="hidden" [(ngModel)]="checkout.totalDiscount" name="discount" value={{discount}} >
+            <label for="time"><i class="fa fa-user"></i> Time Of Wash</label>
+            <input class="form-control" [(ngModel)]="checkout.timeOfWash"  type="time" name="timeOfWash" >
+            <label for="date"><i class="fa fa-envelope"></i> Date Of Wash</label>
+            <input type="date" id="inputdate" [(ngModel)]="checkout.dateOfWash"  name="date" class="form-control">
+            <label for="low"><i class="fa fa-address-card-o"></i> Location Of Wash</label>
+            <input type="text" id="adr" [(ngModel)]="checkout.location" name="location" placeholder="542 W. 15th Street">
+            <label for="city"><i class="fa fa-institution"></i> City</label>
+            <input type="text" id="city" name="city" placeholder="New York">
+
+            <div class="row">
+              <div class="col-50">
+                <label for="state">State</label>
+                <input type="text" id="state" name="state" placeholder="NY">
+              </div>
+              <div class="col-50">
+                <label for="zip">Pin</label>
+                <input type="text" id="zip" name="zip" placeholder="10001">
+              </div>
+            </div>
+          </div>
+
+          <div class="col-50">
+            <h3>Car Details</h3>
+            <label for="cname">Car Number</label>
+            <input type="text" id="cno" name="carNumber" placeholder="MH 20 FY 3633">
+            <label for="carType">Car Type</label>
+            <select class="form-control" name="carType" >
+              <option value="sedan">Sedan</option>
+              <option value="hatchback">Hatchback</option>
+              <option value="suv">SUV</option>
+              <option value="travler">Travler</option>
+            </select>
+            <label for="carImg">Car Img</label>
+            <input type="file" class="form-control" id="carImg" name="carImg" placeholder="September">
+
+            <div class="row">
+              <div class="col-50">
+                <label for="couupen">Coupen</label>
+                <input [(ngModel)]="promo.code" type="text" id="expyear" name="expyear" placeholder="COUPEN ">
+              </div>
+              <div class="col-50" style="padding-top: 15px">
+                <label for="coupen"> </label>
+                <button (click)="getPromoCode(promo)" class="btn btn-primary">Apply</button>
+              </div>
+              <p>{{coupenMessage}}</p>
+            </div>
+          </div>
+        </div>
+        <input type="button" (click)="checkoutInfo(checkout)" value="Continue to checkout" class="btn">
+      </form>
+    </div>
+  </div>
+
+  <div class="col-25">
+    <div class="container">
+      <h4>Cart
+        <span class="price" style="color:black">
+          <i class="fa fa-shopping-cart"></i>
+          <b>4</b>
+        </span>
+      </h4>
+      <p><a href="#">Product 1</a> <span class="price">$15</span></p>
+      <p><a href="#">Product 2</a> <span class="price">$5</span></p>
+      <p><a href="#">Product 3</a> <span class="price">$8</span></p>
+      <p><a href="#">Product 4</a> <span class="price">$2</span></p>
+      <hr>
+      <p>Total <span class="price" style="color:black"><b>${{totalAmount}}</b></span></p>
+    </div>
+  </div>
+</div>
+</div>
