@@ -6,8 +6,7 @@
       <div class="card-body">
         <h5 class="card-title">{{service.catogries}}</h5>
         <p class="card-text">{{service.discription}}</p>
-        <button type="button" data-bs-toggle="modal"
-        data-bs-target="#fillDetailModal"  class="btn btn-primary">{{service.charges}}</button>
+        <button type="button" (click)="checkout(service.washTypeId)" class="btn btn-primary">{{service.charges}}</button>
       </div>
     </div>
   </div>

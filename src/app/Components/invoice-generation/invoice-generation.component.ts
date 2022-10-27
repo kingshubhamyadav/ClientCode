@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Orders } from 'src/app/Models/orders.model';
+import { Orders } from 'src/app/models/orders.model';
 import { WasherApiService } from 'src/app/Services/washer-api.service';
 import { Router } from '@angular/router';
-import { Invoice } from 'src/app/Models/invoiceList.models';
+import { Invoice } from 'src/app/models/invoiceList.models';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { afterWash } from 'src/app/Models/washComplete.model';
+import { afterWash } from 'src/app/models/washComplete.model';
 import { concatWith } from 'rxjs';
 
 @Component({
@@ -59,5 +59,5 @@ export class InvoiceGenerationComponent implements OnInit {
   //service call to get auto-filled fields in the modal
   fill(row : any){
     this.formValue.controls['orderId'].setValue(row.orderId);
-  } 
+  }
 }

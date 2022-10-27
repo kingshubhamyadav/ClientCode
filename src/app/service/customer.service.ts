@@ -2,7 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { allWasher } from '../models/allWasher';
 import { Checkout } from '../models/checkout';
+import { GetUser } from '../models/getUser';
 import { orderHistory } from '../models/orderHistory';
 import { PromoCode } from '../models/promoCode';
 import { washType } from '../models/washType';
@@ -25,11 +27,16 @@ export class CustomerService {
     );
   }
   public checkoutInfo(checkout:Checkout): Observable<Checkout>{
-    return this.http.post<Checkout>(this.baseApiUrl+'/Customer/StoreOrderDetail',checkout,
-    );
+    return this.http.post<Checkout>(this.baseApiUrl+'/Customer/StoreOrderDetail',checkout);
   }
 
-  public getOrdersHistory():Observable<orderHistory[]>{
-    return this.http.get<orderHistory[]>(this.baseApiUrl+'/Customer/OrderHistory?userId=0');
+  public getOrdersHistory(userId : number):Observable<orderHistory[]>{
+    return this.http.get<orderHistory[]>(this.baseApiUrl+'/Customer/OrderHistory?userId='+userId);
+  }
+  public getAllWasher():Observable<allWasher[]>{
+    return this.http.get<allWasher[]>(this.baseApiUrl+'/Customer/GetWasher');
+  }
+  public getUser(userId : number):Observable<GetUser[]>{
+    return this.http.get<GetUser[]>(this.baseApiUrl+'/Customer/GetUserDetail?userId='+userId);
   }
 }

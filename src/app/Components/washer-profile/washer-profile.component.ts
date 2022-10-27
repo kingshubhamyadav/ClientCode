@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Profile } from 'src/app/models/profile.model';
 import { WasherApiService } from 'src/app/Services/washer-api.service';
-import { Profile } from 'src/app/Models/profile.model';
+
 
 @Component({
   selector: 'app-washer-profile',

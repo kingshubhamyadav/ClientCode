@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Orders } from 'src/app/Models/orders.model';
+import { Orders } from 'src/app/models/orders.model';
 import { WasherApiService } from 'src/app/Services/washer-api.service';
 
 @Component({

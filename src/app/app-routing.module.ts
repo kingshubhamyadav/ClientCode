@@ -16,20 +16,48 @@ import { AboutUsComponent } from './about-us/about-us.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { OrderHistoryComponent } from './customer/order-history/order-history.component';
 import { InvoiceComponent } from './customer/invoice/invoice.component';
+import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
+import { AdminNavbarComponent } from './admin/admin-navbar/admin-navbar.component';
+import { CreatePromocodeComponent } from './admin/create-promocode/create-promocode.component';
+import { CreateServicesComponent } from './admin/create-services/create-services.component';
+import { CreateWasherComponent } from './admin/create-washer/create-washer.component';
+import { AllWasherComponent } from './admin/all-washer/all-washer.component';
+import { AllCustomerComponent } from './admin/all-customer/all-customer.component';
+import { PendingOrderComponent } from './admin/pending-order/pending-order.component';
+import { AllOrderComponent } from './admin/all-order/all-order.component';
+import { PromocodeComponent } from './admin/promocode/promocode.component';
+import { ProfileComponent } from './customer/profile/profile.component';
+import { LeadersBaoardComponent } from './customer/leaders-baoard/leaders-baoard.component';
+import { AuthGuard } from './shared/auth.guard';
+import { CustomerGuard } from './shared/customer.guard';
+import { AdminGuard } from './shared/admin.guard';
+
 
 const routes: Routes = [
   //customer
 //  {path:'',component:HomeComponent},
-  {path:'home',component:HomeComponent},
-  {path:'register',component:RegisterComponent},
-  {path:'login',component:LoginComponent},
-  {path:'checkout',component:CheckoutComponent},
-  {path:'orderHistory',component:OrderHistoryComponent},
-  {path:'invoice',component:InvoiceComponent},
+  {path:'home',component:HomeComponent,canActivate:[AuthGuard,CustomerGuard]},
+  {path:'register',component:RegisterComponent,canActivate:[AuthGuard,CustomerGuard]},
+  {path:'login',component:LoginComponent,canActivate:[AuthGuard,CustomerGuard]},
+  {path:'checkout',component:CheckoutComponent,canActivate:[AuthGuard,CustomerGuard]},
+  {path:'orderHistory',component:OrderHistoryComponent,canActivate:[AuthGuard,CustomerGuard]},
+  {path:'invoice',component:InvoiceComponent,canActivate:[AuthGuard,CustomerGuard]},
+  {path:'profile',component:ProfileComponent,canActivate:[AuthGuard,CustomerGuard]},
+  {path:'leadersBoards',component:LeadersBaoardComponent,canActivate:[AuthGuard,CustomerGuard]},
 
-  {path:'aboutUs',component:AboutUsComponent},
-  {path:'contactUs',component:ContactUsComponent},
-
+  {path:'aboutUs',component:AboutUsComponent,canActivate:[AuthGuard,CustomerGuard]},
+  {path:'contactUs',component:ContactUsComponent,canActivate:[AuthGuard,CustomerGuard]},
+  //admin
+  {path:'adminHome',component:AdminHomeComponent,canActivate:[AuthGuard,AdminGuard]},
+  {path:'adminNavbar',component:AdminNavbarComponent,canActivate:[AuthGuard,AdminGuard]},
+  {path:'createPromocode',component:CreatePromocodeComponent,canActivate:[AuthGuard,AdminGuard]},
+  {path:'createServices',component:CreateServicesComponent,canActivate:[AuthGuard,AdminGuard]},
+  {path:'createWasher',component:CreateWasherComponent,canActivate:[AuthGuard,AdminGuard]},
+  {path:'all-washer',component:AllWasherComponent,canActivate:[AuthGuard,AdminGuard]},
+  {path:'all-customer',component:AllCustomerComponent,canActivate:[AuthGuard,AdminGuard]},
+  {path:'pending-order',component:PendingOrderComponent,canActivate:[AuthGuard,AdminGuard]},
+  {path:'all-order',component:AllOrderComponent,canActivate:[AuthGuard,AdminGuard]},
+  {path:'all-promocode',component:PromocodeComponent,canActivate:[AuthGuard,AdminGuard]},
   //washer
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   { path: 'dashboard', component: WasherDashboardComponent },
@@ -48,7 +76,8 @@ const routes: Routes = [
 })
 export class AppRoutingModule { }
 export const routingComponents=[HomeComponent,RegisterComponent,LoginComponent,CheckoutComponent,ContactUsComponent,AboutUsComponent,
-  OrderHistoryComponent,
+  OrderHistoryComponent,AdminHomeComponent,AdminNavbarComponent,CreatePromocodeComponent,CreateServicesComponent,CreateWasherComponent,AllWasherComponent,
+  AllCustomerComponent,PendingOrderComponent,AllOrderComponent,PromocodeComponent,ProfileComponent,LeadersBaoardComponent,
   WasherDashboardComponent, WasherProfileComponent, WashRequestsComponent, InvoiceGenerationComponent, WasherOrdersComponent, PageNotFoundComponent]
 
 export const routingComponent = [WasherDashboardComponent, WasherProfileComponent, WashRequestsComponent, InvoiceGenerationComponent, WasherOrdersComponent, PageNotFoundComponent, CurrentOrdersComponent, PastOrdersComponent];

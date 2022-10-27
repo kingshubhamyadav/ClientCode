@@ -11,17 +11,16 @@
 
 
 <!-- Toolbar -->
-<app-navbar></app-navbar>
-
-<div class="content" role="main">
-
+<app-navbar *ngIf="role=='Customer'"></app-navbar><!--customer navbar-->
+<app-navbar *ngIf="role=='Washer'"></app-navbar><!--washer navbar-->
+<app-admin-navbar *ngIf="role=='Admin'"></app-admin-navbar><!--admin navbar-->
 
   <router-outlet></router-outlet>
 
   <!-- Footer -->
   <app-footer></app-footer>
 
-</div>
+
 
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * The content above * * * * * * * * * * * -->

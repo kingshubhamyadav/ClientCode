@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { washType } from 'src/app/models/washType';
 import { CustomerService } from 'src/app/service/customer.service';
 
@@ -12,7 +13,7 @@ export class HomeComponent implements OnInit {
 
   services:washType[]=[];
 
-  constructor(private customerService:CustomerService) { }
+  constructor(private customerService:CustomerService, private router:Router) { }
 
   ngOnInit(): void {
     this.customerService.getAllWashType()
@@ -24,6 +25,9 @@ export class HomeComponent implements OnInit {
         console.log(response);
       }
     })
+  }
+  checkout(washTypeId :string){
+        this.router.navigate(['/checkout']);
   }
 
 }

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Requests } from 'src/app/Models/requests.model';
+import { Requests } from 'src/app/models/requests.model';
 import { WasherApiService } from 'src/app/Services/washer-api.service';
 import { Router } from '@angular/router';
 import { ConnectableObservable } from 'rxjs';
-import { acceptRequest } from 'src/app/Models/AcceptRequest.model';
+import { acceptRequest } from 'src/app/models/AcceptRequest.model';
 
 @Component({
   selector: 'app-wash-requests',

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Checkout } from 'src/app/models/checkout';
 import { PromoCode } from 'src/app/models/promoCode';
+import { allWasher } from 'src/app/models/allWasher';
 import { CustomerService } from 'src/app/service/customer.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-checkout',
@@ -13,13 +15,24 @@ export class CheckoutComponent implements OnInit {
   totalAmount:number=2000;
   promo= new PromoCode();
   checkout= new Checkout();
+  washers: allWasher[]=[];
 
   discount:string='0';
   discountApplied:boolean=false;
   coupenMessage:string='';
-  constructor(private customrServices:CustomerService) { }
+  userId=Number(localStorage.getItem('userId'));
+  constructor(private customrServices:CustomerService,private router:Router) { }
 
   ngOnInit(): void {
+    this.customrServices.getAllWasher()
+    .subscribe({
+      next:(washers)=>{
+       this.washers=washers;
+      },
+      error:(response)=>{
+        console.log(response);
+      }
+    });
   }
   getPromoCode(promo:PromoCode){
     this.customrServices.getPromoCode(promo).subscribe({
@@ -42,11 +55,13 @@ export class CheckoutComponent implements OnInit {
     });
   }
   checkoutInfo(checkout:Checkout){
+    this.checkout.userId= this.userId;
     this.checkout.amountPaid=this.totalAmount.toString();
     this.customrServices.checkoutInfo(checkout).subscribe({
       next:(info :Checkout)=>{
         this.checkout=info;
         console.log(info);
+        this.router.navigate(['/orderHistory']);
       }
     });
   }

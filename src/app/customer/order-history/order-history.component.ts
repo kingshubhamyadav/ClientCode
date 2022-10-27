@@ -8,12 +8,13 @@ import { CustomerService } from 'src/app/service/customer.service';
   styleUrls: ['./order-history.component.css']
 })
 export class OrderHistoryComponent implements OnInit {
-
+   title='Order History';
+  userId=Number(localStorage.getItem('userId'));
   orders:orderHistory[]=[];
   constructor(private customerService:CustomerService) { }
 
   ngOnInit(): void {
-    this.customerService.getOrdersHistory()
+    this.customerService.getOrdersHistory(this.userId)
     .subscribe({
       next:(orders)=>{
        this.orders=orders;

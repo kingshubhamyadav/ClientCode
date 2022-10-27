@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Requests } from '../Models/requests.model';
+import { Requests } from '../models/requests.model';
 import { environment } from 'src/environments/environment';
-import { Orders } from '../Models/orders.model';
-import { Invoice } from '../Models/invoiceList.models';
-import { afterWash } from '../Models/washComplete.model';
-import { acceptRequest } from '../Models/AcceptRequest.model';
-import { Profile } from '../Models/profile.model';
+import { acceptRequest } from '../models/AcceptRequest.model';
+import { Invoice } from '../models/invoiceList.models';
+import { Profile } from '../models/profile.model';
+import { afterWash } from '../models/washComplete.model';
+import { Orders } from '../models/orders.model';
+
 
 @Injectable({
   providedIn: 'root'

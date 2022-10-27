@@ -1,0 +1,32 @@
+<div  style="padding-top: 50px" class="container">
+  <div class="row main">
+    <div class="main-login main-center">
+      <form class="form-horizontal" method="post" action="#">
+        <div class="form-group">
+          <label style="padding-left: 300px" for="username" class="cols-sm-2 control-label">Coupen Code</label>
+          <div style="padding-left: 300px;padding-right :300px" class="cols-sm-10">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+              <input type="text" [(ngModel)]="promo.code" name="code"class="form-control" placeholder="Enter Coupen Code"/>
+            </div>
+          </div>
+        </div>
+
+        <div  style="padding-top: 20px" class="form-group">
+          <label style="padding-left: 300px" for="password" class="cols-sm-2 control-label">Discount</label>
+          <div  style="padding-left: 300px;padding-right :300px" class="cols-sm-10">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+              <input type="text" [(ngModel)]="promo.discount" name="discount" class="form-control"   placeholder="Enter Discount in Rupees"/>
+            </div>
+          </div>
+        </div>
+        <div style="padding-left: 300px;padding-top: 10px" class="form-group ">
+          <button type="button" (click)="createPromocodeInfo(promo)" class="btn btn-primary btn-lg btn-block login-button">Create </button>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+</div>

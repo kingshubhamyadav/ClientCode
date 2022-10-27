@@ -1,0 +1,44 @@
+<div class="container">
+  <table class="table table-hover table-responsive mt-5">
+      <thead class="thead-dark">
+          <tr>
+              <th scope="col">#</th>
+              <th scope="col">Order Id</th>
+              <th scope="col">Coupen Applied</th>
+              <th scope="col">Time of Wash </th>
+              <th scope="col">Date of Wash</th>
+              <th scope="col">Location</th>
+              <th scope="col">Rating</th>
+              <th scope="col">Order Status</th>
+              <th scope="col">Assign</th>
+          </tr>
+
+      </thead>
+      <tbody>
+        <!--  -->
+          <tr *ngFor="let row of pen, let i=index">
+            <!-- order -->
+              <th scope="row">{{i+1}}</th>
+              <td>{{row.orderId}}</td>
+              <td>{{row.code}}</td>
+              <td>{{row.timeOfWash}}</td>
+              <td>{{row.dateOfWash}}</td>
+              <td>{{row.location}}</td>
+              <td>{{row.rating}}</td>
+              <td>{{row.orderStatus}}</td>
+              <td>
+                <!-- (click)="fill(row)" -->
+                  <button  type="button" class="btn btn-success" routerLink="/invoice">Assign</button>
+              </td>
+          </tr>
+
+      </tbody>
+  </table>
+
+  <div *ngIf="!pen || pen.length == 0"  class="container d-flex flex-column justify-content-center">
+      <div>
+          <h1> No orders to display</h1>
+      </div>
+  </div>
+</div>
+

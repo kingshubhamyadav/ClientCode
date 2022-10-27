@@ -14,9 +14,10 @@
             <input type="date" id="inputdate" [(ngModel)]="checkout.dateOfWash"  name="date" class="form-control">
             <label for="low"><i class="fa fa-address-card-o"></i> Location Of Wash</label>
             <input type="text" id="adr" [(ngModel)]="checkout.location" name="location" placeholder="542 W. 15th Street">
-            <label for="city"><i class="fa fa-institution"></i> City</label>
-            <input type="text" id="city" name="city" placeholder="New York">
-
+            <label for="washer"><i class="fa fa-car"></i> Chose Car Washer</label>
+            <select [(ngModel)]="checkout.washerUserId" class="form-control" name="carType" >
+              <option value="{{row.userId}}" *ngFor="let row of washers">{{row.firstName}}</option>
+            </select>
             <div class="row">
               <div class="col-50">
                 <label for="state">State</label>
@@ -32,9 +33,9 @@
           <div class="col-50">
             <h3>Car Details</h3>
             <label for="cname">Car Number</label>
-            <input type="text" id="cno" name="carNumber" placeholder="MH 20 FY 3633">
+            <input type="text" id="cno" [(ngModel)]="checkout.carNumber" name="carNumber" placeholder="MH 20 FY 3633">
             <label for="carType">Car Type</label>
-            <select class="form-control" name="carType" >
+            <select class="form-control" [(ngModel)]="checkout.carType" name="carType" >
               <option value="sedan">Sedan</option>
               <option value="hatchback">Hatchback</option>
               <option value="suv">SUV</option>
@@ -66,14 +67,11 @@
       <h4>Cart
         <span class="price" style="color:black">
           <i class="fa fa-shopping-cart"></i>
-          <b>4</b>
+          <b>1</b>
         </span>
       </h4>
-      <p><a href="#">Product 1</a> <span class="price">$15</span></p>
-      <p><a href="#">Product 2</a> <span class="price">$5</span></p>
-      <p><a href="#">Product 3</a> <span class="price">$8</span></p>
-      <p><a href="#">Product 4</a> <span class="price">$2</span></p>
-      <hr>
+      <p><a href="/home">Product 1</a> <span class="price">$15</span></p>
+         <hr>
       <p>Total <span class="price" style="color:black"><b>${{totalAmount}}</b></span></p>
     </div>
   </div>
