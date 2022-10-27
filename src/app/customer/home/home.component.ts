@@ -26,7 +26,10 @@ export class HomeComponent implements OnInit {
       }
     })
   }
-  checkout(washTypeId :string){
+  checkout(washTypeId :string,charges:string,catogries:string){
+        localStorage.setItem('washTypeId',washTypeId);
+        localStorage.setItem('charges',charges);
+        localStorage.setItem('serviceName',catogries);
         this.router.navigate(['/checkout']);
   }
 

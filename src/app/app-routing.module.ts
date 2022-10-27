@@ -37,8 +37,8 @@ const routes: Routes = [
   //customer
 //  {path:'',component:HomeComponent},
   {path:'home',component:HomeComponent,canActivate:[AuthGuard,CustomerGuard]},
-  {path:'register',component:RegisterComponent,canActivate:[AuthGuard,CustomerGuard]},
-  {path:'login',component:LoginComponent,canActivate:[AuthGuard,CustomerGuard]},
+  {path:'register',component:RegisterComponent},
+  {path:'login',component:LoginComponent},
   {path:'checkout',component:CheckoutComponent,canActivate:[AuthGuard,CustomerGuard]},
   {path:'orderHistory',component:OrderHistoryComponent,canActivate:[AuthGuard,CustomerGuard]},
   {path:'invoice',component:InvoiceComponent,canActivate:[AuthGuard,CustomerGuard]},

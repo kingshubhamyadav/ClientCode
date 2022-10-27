@@ -12,7 +12,9 @@ import { Router } from '@angular/router';
 })
 export class CheckoutComponent implements OnInit {
   title='Checkout';
-  totalAmount:number=2000;
+  baseAmount:number=Number(localStorage.getItem('charges'));
+  totalAmount:number=Number(localStorage.getItem('charges'));
+  serviceName=localStorage.getItem('serviceName');
   promo= new PromoCode();
   checkout= new Checkout();
   washers: allWasher[]=[];
@@ -56,6 +58,7 @@ export class CheckoutComponent implements OnInit {
   }
   checkoutInfo(checkout:Checkout){
     this.checkout.userId= this.userId;
+    this.checkout.washerUserId= Number(localStorage.getItem('washTypeId'));
     this.checkout.amountPaid=this.totalAmount.toString();
     this.customrServices.checkoutInfo(checkout).subscribe({
       next:(info :Checkout)=>{
