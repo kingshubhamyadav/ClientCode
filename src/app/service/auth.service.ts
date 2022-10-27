@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { User } from '../models/user';
-import { UserRegister } from '../models/userRegister';
+import { User } from '../Models/user';
+import { UserRegister } from '../Models/userRegister';
 
 @Injectable({
   providedIn: 'root'
@@ -21,5 +21,10 @@ export class AuthService {
   }
   public weather(): Observable<string>{
     return this.http.get('https://localhost:7112/WeatherForecast',{responseType:'text'});
+  }
+
+  //function used to check if user is logged in
+  loggedIn(){
+    return !!localStorage.getItem('token');
   }
 }

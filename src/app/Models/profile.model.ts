@@ -8,4 +8,5 @@ export class Profile{
     pincode! : string;
     city! : string;
     state! : string;
+    img! : string;
 }
