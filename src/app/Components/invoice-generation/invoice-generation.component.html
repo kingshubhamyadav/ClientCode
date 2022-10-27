@@ -52,13 +52,27 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Water used (Litres)</label>
-                        <input type="text" formControlName="waterUsed" class="form-control">
+                        <input
+                            [class.is-invalid]="formValue.get('waterUsed')?.invalid && formValue.get('waterUsed')?.touched"
+                            type="text" formControlName="waterUsed" class="form-control">
+                        <small [class.d-none]="formValue.get('carImg')?.valid || formValue.get('waterUsed')?.untouched"
+                            class="text-danger">Amount of water used is
+                            required</small>
+                    </div>
+                    <img [class.d-none]="!hasImage" [src]="imgUrl" alt="Car Image" width="150">
+                    <div class="mt-3">
+                        <input [class.is-invalid]="formValue.get('carImg')?.invalid" formControlName="carImg"
+                            id="fileUpload" class="hidden" type="file" (change)="onSelectFile($event)">
+                        <button (click)="uploadPhoto()" style="color:aliceblue;display: flex; align-items: flex-end;"
+                            class="btn btn-info ms-auto">Upload Image</button>
+                        <small [class.d-none]="formValue.get('carImg')?.valid" class="text-danger">Car image is
+                            required</small>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
                 <button type="button" id="cancel" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" (click)="postInvoiceDetails()" class="btn btn-primary">Add Details</button>
+                <button [disabled]="!formValue.valid" type="button" (click)="postInvoiceDetails()" class="btn btn-primary">Add Details</button>
             </div>
         </div>
     </div>

@@ -3,7 +3,7 @@ import { Orders } from 'src/app/models/orders.model';
 import { WasherApiService } from 'src/app/Services/washer-api.service';
 import { Router } from '@angular/router';
 import { Invoice } from 'src/app/models/invoiceList.models';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { afterWash } from 'src/app/models/washComplete.model';
 import { concatWith } from 'rxjs';
 
@@ -19,14 +19,16 @@ export class InvoiceGenerationComponent implements OnInit {
   invoices!: Invoice[];
   formValue!: FormGroup;
   afterWashObj: afterWash = new afterWash();
+  imgUrl = "";
+  hasImage : boolean = false;
 
   ngOnInit(): void {
     this.getInvoiceList();
 
     this.formValue = this.formBuilder.group({
       orderId: [''],
-      waterUsed: [''],
-      //carImg : ['']
+      waterUsed: ['',Validators.required],
+      carImg : ['',Validators.required]
     })
   }
 
@@ -52,7 +54,7 @@ export class InvoiceGenerationComponent implements OnInit {
         this.getInvoiceList();
       },
         err => {
-          alert("Something went wrong");
+          alert("Error in sending invoice details. Something went wrong!");
         })
   }
 

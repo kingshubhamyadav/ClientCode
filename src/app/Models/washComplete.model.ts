@@ -2,5 +2,5 @@
 export class afterWash{
     orderId! : number;
     waterUsed! : number;
-    //carImg! : string;
+    carImg! : string;
 }

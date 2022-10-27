@@ -24,4 +24,9 @@ export class AuthService {
   public weather(): Observable<string>{
     return this.http.get('https://localhost:7112/WeatherForecast',{responseType:'text'});
   }
+
+  //function used to check if user is logged in
+  loggedIn(){
+    return !!localStorage.getItem('token');
+  }
 }

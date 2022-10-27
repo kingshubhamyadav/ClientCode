@@ -28,6 +28,11 @@ export class WasherApiService {
     return this.http.get<Profile>(`${environment.apiUrl}/${this._url}/view-profile/${id}`);
   }
 
+  //post method to upload photo to DB
+  uploadPhoto(data : any){
+    return this.http.post(`${environment.apiUrl}/${this._url}/upload-profile-img`,data);
+  }
+
   //update method to edit washer profile
   updateProfile(id : any, data : any){
     return this.http.put(`${environment.apiUrl}/${this._url}/edit-profile/${id}`,data);

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { Profile } from 'src/app/models/profile.model';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { WasherApiService } from 'src/app/Services/washer-api.service';
-
+import { Profile } from 'src/app/models/profile.model';
+import { profileImage } from 'src/app/models/profileImage.model';
 
 @Component({
   selector: 'app-washer-profile',
@@ -15,16 +15,18 @@ export class WasherProfileComponent implements OnInit {
   constructor(private formBuilder: FormBuilder, private washerService: WasherApiService) { }
   profiles!: Profile;
   profileObj: Profile = new Profile();
+  imageObj : profileImage = new profileImage();
+  imgUrl = ""
 
   ngOnInit(): void {
     this.formValue = this.formBuilder.group({
-      firstName: [''],
-      lastName: [''],
-      email: [''],
-      phoneNumber: [''],
-      pincode: [''],
-      city: [''],
-      state: ['']
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      email: ['', Validators.required],
+      phoneNumber: ['', [Validators.required,Validators.pattern("^[0-9]{10}$")]],
+      pincode: ['', [Validators.required,Validators.pattern("^[0-9]{6}$")]],
+      city: ['', Validators.required],
+      state: ['', Validators.required]
     })
 
     //let id = localStorage.getItem('userId');
@@ -36,7 +38,8 @@ export class WasherProfileComponent implements OnInit {
     return this.washerService.getProfile(id)
       .subscribe(res => {
         this.profiles = res;
-        console.log(this.profiles.phoneNumber);
+        //console.log(this.profiles.phoneNumber);
+        this.imgUrl = this.profiles.img;
       });
   }
 
@@ -68,5 +71,29 @@ export class WasherProfileComponent implements OnInit {
         this.formValue.reset();
         this.getProfileInfo(id);
       })
+  }
+
+  onSelectFile(e  : any){
+    if(e.target.files){
+      var reader = new FileReader();
+      reader.readAsDataURL(e.target.files[0]);
+      reader.onload = (event : any) => {
+        this.imgUrl = event.target.result;
+        this.imageObj.img = this.imgUrl;
+        this.imageObj.userId = this.profiles.userId;
+        this.washerService.uploadPhoto(this.imageObj)
+            .subscribe(res => {
+              alert("Profile photo updated successfully!");
+            },
+            err => {
+              alert("Profile photo upload failed! Something went wrong.");
+            })
+      }
+    }
+  }
+
+  uploadPhoto(){
+    let ref = document.getElementById('fileUpload');
+    ref?.click();
   }
 }
