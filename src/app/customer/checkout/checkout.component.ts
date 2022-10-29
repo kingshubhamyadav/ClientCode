@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Checkout } from 'src/app/Models/checkout';
-import { PromoCode } from 'src/app/Models/promoCode';
-import { allWasher } from 'src/app/Models/allWasher';
+import { Checkout } from 'src/app/models/checkout';
+import { PromoCode } from 'src/app/models/promoCode';
+import { allWasher } from 'src/app/models/allWasher';
 import { CustomerService } from 'src/app/service/customer.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
@@ -28,22 +28,10 @@ export class CheckoutComponent implements OnInit {
   role=localStorage.getItem('role');
 
   ngOnInit(): void {
-    // this.customrServices.getAllWasher()
-    // .subscribe({
-    //   next:(washers)=>{
-    //    this.washers=washers;
-    //   },
-    //   error:(response)=>{
-    //     Swal.fire({
-    //       icon: 'error',
-    //       title: 'Oops...',
-    //       text: 'Something went wrong! Unable to fetch washers.',
-    //       //footer: '<a href="">Why do I have this issue?</a>'
-    //     })
-    //   }
-    // });
+
   }
   getPromoCode(promo:PromoCode){
+    promo.userId=Number(localStorage.getItem('userId'));
     this.customrServices.getPromoCode(promo).subscribe({
       next:(discount:string)=>{
         if(this.discountApplied){
@@ -65,8 +53,11 @@ export class CheckoutComponent implements OnInit {
   }
   checkoutInfo(checkout:Checkout){
     this.checkout.userId= this.userId;
+    this.checkout.washTypeId= Number(localStorage.getItem('washTypeId'));
+    this.checkout.code= this.promo.code;
     this.checkout.washerUserId= Number(localStorage.getItem('washTypeId'));
     this.checkout.amountPaid=this.totalAmount.toString();
+    this.checkout.amountPaid=this.discount.toString();
     this.customrServices.checkoutInfo(checkout).subscribe({
       next:(info :Checkout)=>{
         this.checkout=info;

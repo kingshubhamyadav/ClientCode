@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { GetAllWasher } from 'src/app/Models/getAllWasher';
+import { GetAllWasher } from 'src/app/models/getAllWasher';
 import { AdminService } from 'src/app/service/admin.service';
 import Swal from 'sweetalert2';
 
@@ -32,5 +32,24 @@ export class AllWasherComponent implements OnInit {
       }
     })
   }
+  //change status of customer
+  changeStatus(i:number){
+    if(this.washer[i].status=='Active'){
+      this.washer[i].status='InActive'
+
+      this.adminService.washerStatus(this.washer[i])
+      .subscribe()
+
+    }
+    else{
+       this.washer[i].status='Active'
+      this.adminService.washerStatus(this.washer[i])
+      .subscribe()
+    }
+
+
+
+  }
+
 
 }

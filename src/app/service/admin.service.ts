@@ -2,13 +2,13 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { CreatePromocode } from '../Models/createPromo';
-import { CreateService } from '../Models/createService';
-import { CreateWasher } from '../Models/createWasher';
-import { GetAllCustomer } from '../Models/getAllCustomer';
-import { GetAllWasher } from '../Models/getAllWasher';
-import { GetPromoCode } from '../Models/getPromoCode';
-import { Order } from '../Models/order';
+import { CreatePromocode } from '../models/createPromo';
+import { CreateService } from '../models/createService';
+import { CreateWasher } from '../models/createWasher';
+import { GetAllCustomer } from '../models/getAllCustomer';
+import { GetAllWasher } from '../models/getAllWasher';
+import { GetPromoCode } from '../models/getPromoCode';
+import { Order } from '../models/order';
 
 @Injectable({
   providedIn: 'root'
@@ -49,4 +49,20 @@ export class AdminService {
   public getAllPromocode():Observable<GetPromoCode[]>{
     return this.http.get<GetPromoCode[]>(this.baseApiUrl+'/Admin/AllPromocode');
   }
+ //change promo status
+ public promoStatus(promo:GetPromoCode):Observable<GetPromoCode>{
+  return this.http.put<GetPromoCode>(this.baseApiUrl+'/Admin/PromoStatus?promoId='+promo.promoId,promo)
+}
+
+//change washer status
+public washerStatus(washer:GetAllWasher):Observable<GetAllWasher>{
+  return this.http.put<GetAllWasher>(this.baseApiUrl+'/Admin/WasherStatus?userId='+washer.userId,washer)
+}
+
+//change customer status
+public customerStatus(cust:GetAllCustomer):Observable<GetAllCustomer>{
+  return this.http.put<GetAllCustomer>(this.baseApiUrl+'/Admin/CustomerStatus?userId='+cust.userId,cust)
+}
+
+
 }

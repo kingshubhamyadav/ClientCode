@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { GetPromoCode } from 'src/app/Models/getPromoCode';
+import { GetPromoCode } from 'src/app/models/getPromoCode';
 import { AdminService } from 'src/app/service/admin.service';
 import Swal from 'sweetalert2';
 
@@ -30,6 +30,24 @@ export class PromocodeComponent implements OnInit {
         })
       }
     })
+  }
+
+  changeStatus(i:number){
+    if(this.promo[i].status=='Active'){
+      this.promo[i].status='InActive'
+
+      this.adminService.promoStatus(this.promo[i])
+      .subscribe()
+
+    }
+    else{
+       this.promo[i].status='Active'
+      this.adminService.promoStatus(this.promo[i])
+      .subscribe()
+    }
+
+
+
   }
 
 }

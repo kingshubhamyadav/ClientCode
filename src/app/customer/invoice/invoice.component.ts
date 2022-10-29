@@ -7,10 +7,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InvoiceComponent implements OnInit {
 
+  title='Invoice';
   constructor() { }
   role=localStorage.getItem('role');
 
+  totalDiscount= Number(localStorage.getItem('totalDiscount'));
+  serviceAmount=Number(localStorage.getItem('amountPaid'))+this.totalDiscount;
+  totalAmount=Number(localStorage.getItem('amountPaid'));
+
+  email=localStorage.getItem('email');
+  phone=localStorage.getItem('phone');
+  name=localStorage.getItem('name');
+
   ngOnInit(): void {
+
   }
 
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { CreatePromocode } from 'src/app/Models/createPromo';
+import { CreatePromocode } from 'src/app/models/createPromo';
 import { AdminService } from 'src/app/service/admin.service';
 import Swal from 'sweetalert2';
 

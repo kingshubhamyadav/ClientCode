@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserRegister } from 'src/app/Models/userRegister';
+import { UserRegister } from 'src/app/models/userRegister';
 import { AuthService } from 'src/app/service/auth.service';
 import Swal from 'sweetalert2';
 
@@ -16,7 +16,7 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  
+
   register(user:UserRegister){
     this.authService.register(user).subscribe(err=>
       {

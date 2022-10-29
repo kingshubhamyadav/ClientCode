@@ -19,7 +19,7 @@
           <label style="padding-right: 300px" for="lastName" class="cols-sm-2 control-label">Last Name</label>
           <div class="cols-sm-10">
             <div class="input-group">
-              <input required type="text" #lastName="ngModel" [class.is-invalid]="lastName.invalid && lastName.touched" [(ngModel)]="user.firstName" [(ngModel)]="user.lastName" name="lastName" class="form-control"   placeholder="Enter your Last Name"/>
+              <input required type="text" #lastName="ngModel" [class.is-invalid]="lastName.invalid && lastName.touched" [(ngModel)]="user.lastName" [(ngModel)]="user.lastName" name="lastName" class="form-control"   placeholder="Enter your Last Name"/>
             </div>
           </div>
           <small style="padding-right: 230px" [class.d-none]="lastName.valid || lastName.untouched" class="text-danger">Last name is required.</small>

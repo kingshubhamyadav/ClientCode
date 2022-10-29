@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/service/auth.service';
 import jwt_decode from 'jwt-decode';
-import { User } from 'src/app/Models/user';
+import { User } from 'src/app/models/user';
 import Swal from 'sweetalert2';
 
 
@@ -34,8 +34,9 @@ export class LoginComponent implements OnInit {
 
         localStorage.setItem('role',tokenInfo['http://schemas.microsoft.com/ws/2008/06/identity/claims/role']);
         localStorage.setItem('userId',tokenInfo['http://schemas.microsoft.com/ws/2008/06/identity/claims/userdata']);
-        localStorage.setItem('email',tokenInfo['http://schemas.microsoft.com/ws/2008/06/identity/claims/emailaddress']);
-        localStorage.setItem('phone',tokenInfo['http://schemas.microsoft.com/ws/2008/06/identity/claims/mobilephone']);
+        localStorage.setItem('email',tokenInfo['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress']);
+        localStorage.setItem('phone',tokenInfo['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/mobilephone']);
+        localStorage.setItem('name',tokenInfo['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name']);
         localStorage.setItem('authToken',token);
         if( localStorage.getItem('role')=='Customer'){
         this.router.navigate(['/home']);

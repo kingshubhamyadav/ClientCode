@@ -10,7 +10,7 @@
               <th scope="col">User Name</th>
               <th scope="col">Phone</th>
               <th scope="col">Status</th>
-              <th scope="col">Edit</th>
+
           </tr>
 
       </thead>
@@ -24,10 +24,10 @@
               <td>{{row.email}}</td>
               <td>{{row.username}}</td>
               <td>{{row.phone}}</td>
-               <td>{{row.status}}</td>
+
               <td>
                 <!-- (click)="fill(row)" -->
-                  <button  type="button" class="btn btn-success" routerLink="/invoice">Edit</button>
+                  <button  type="button" class="btn btn-success" (click)="changeStatus(i)">{{row.status}}</button>
               </td>
           </tr>
 

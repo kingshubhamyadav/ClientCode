@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { GetUser } from 'src/app/Models/getUser';
+import { GetUser } from 'src/app/models/getUser';
 import { CustomerService } from 'src/app/service/customer.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Profile } from 'src/app/Models/profile.model';
@@ -32,7 +32,7 @@ export class ProfileComponent implements OnInit {
       phoneNumber: ['', [Validators.required,Validators.pattern("^[0-9]{10}$")]],
     })
 
-    
+
     this.customerService.getUser(this.userId)
     .subscribe({
       next:(user)=>{

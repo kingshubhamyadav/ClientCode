@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { GetAllCustomer } from 'src/app/Models/getAllCustomer';
+import { GetAllCustomer } from 'src/app/models/getAllCustomer';
 import { AdminService } from 'src/app/service/admin.service';
 import Swal from 'sweetalert2';
 
@@ -31,5 +31,25 @@ export class AllCustomerComponent implements OnInit {
       }
     })
   }
+
+  //change status
+  changeStatus(i:number){
+    if(this.cust[i].status=='Active'){
+      this.cust[i].status='InActive'
+
+      this.adminService.customerStatus(this.cust[i])
+      .subscribe()
+
+    }
+    else{
+       this.cust[i].status='Active'
+      this.adminService.customerStatus(this.cust[i])
+      .subscribe()
+    }
+
+
+
+  }
+
 
 }

@@ -23,6 +23,7 @@ import { PastOrdersComponent } from './Components/past-orders/past-orders.compon
 import { NavbarComponent } from './customer/navbar/navbar.component';
 import { AuthInterceptor } from './service/auth.interceptor';
 import { WasherNavbarComponent } from './Components/washer-navbar/washer-navbar.component';
+import { NgxPrintModule } from 'ngx-print';
 
 
 
@@ -51,7 +52,7 @@ import { WasherNavbarComponent } from './Components/washer-navbar/washer-navbar.
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-
+    NgxPrintModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

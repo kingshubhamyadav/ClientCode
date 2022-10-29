@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { CreateWasher } from 'src/app/Models/createWasher';
+import { CreateWasher } from 'src/app/models/createWasher';
 import { AdminService } from 'src/app/service/admin.service';
 import Swal from 'sweetalert2';
 

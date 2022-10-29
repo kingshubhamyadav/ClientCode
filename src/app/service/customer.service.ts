@@ -2,12 +2,12 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { allWasher } from '../Models/allWasher';
-import { Checkout } from '../Models/checkout';
-import { GetUser } from '../Models/getUser';
-import { orderHistory } from '../Models/orderHistory';
-import { PromoCode } from '../Models/promoCode';
-import { washType } from '../Models/washType';
+import { allWasher } from '../models/allWasher';
+import { Checkout } from '../models/checkout';
+import { GetUser } from '../models/getUser';
+import { orderHistory } from '../models/orderHistory';
+import { PromoCode } from '../models/promoCode';
+import { washType } from '../models/washType';
 
 @Injectable({
   providedIn: 'root'
@@ -38,5 +38,8 @@ export class CustomerService {
   }
   public getUser(userId : number):Observable<GetUser[]>{
     return this.http.get<GetUser[]>(this.baseApiUrl+'/Customer/GetUserDetail?userId='+userId);
+  }
+  public getPaymentDetails(orderIdInPayment : number):Observable<orderHistory[]>{
+    return this.http.get<orderHistory[]>(this.baseApiUrl+'/Customer/GetPaymentDetails?orderId='+orderIdInPayment);
   }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { orderHistory } from 'src/app/Models/orderHistory';
+import { Router } from '@angular/router';
+import { orderHistory } from 'src/app/models/orderHistory';
 import { CustomerService } from 'src/app/service/customer.service';
 import Swal from 'sweetalert2';
 
@@ -12,7 +13,7 @@ export class OrderHistoryComponent implements OnInit {
    title='Order History';
   userId=Number(localStorage.getItem('userId'));
   orders:orderHistory[]=[];
-  constructor(private customerService:CustomerService) { }
+  constructor(private customerService:CustomerService,private router:Router) { }
   role=localStorage.getItem('role');
 
   ngOnInit(): void {
@@ -20,7 +21,7 @@ export class OrderHistoryComponent implements OnInit {
     .subscribe({
       next:(orders)=>{
        this.orders=orders;
-       console.log(orders);
+       console.log(orders);//comment it later
       },
       error:(response)=>{
         Swal.fire({
@@ -33,22 +34,20 @@ export class OrderHistoryComponent implements OnInit {
     })
   }
 
-  // giveRating(){
+invoice(index:number,orderIdInPayment:number){
+  console.log(orderIdInPayment);
+  this.customerService.getPaymentDetails(orderIdInPayment)
+    .subscribe({
+      next:(orders)=>{
+       this.orders=orders;
+       console.log(orders);//comment it later
+      },
 
-  //   Swal.fire({
-  //     title: 'How old are you?',
-  //     icon: 'question',
-  //     input: 'range',
-  //     inputLabel: 'Your age',
-  //     inputAttributes: {
-  //       min: 1,
-  //       max: 5,
-  //       step: 1
-  //     },
-  //     inputValue: 5
-  //   })
-
-
-  // }
+    })
+    localStorage.setItem('totalDiscount',this.orders[index].totalDiscount);
+    localStorage.setItem('amountPaid',this.orders[index].amountPaid);
+    localStorage.setItem('dateWashInv',this.orders[index].dateOfWash);
+    this.router.navigate(['/invoice']);
+}
 
 }

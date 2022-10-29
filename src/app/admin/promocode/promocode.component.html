@@ -8,7 +8,6 @@
               <th scope="col">Code</th>
               <th scope="col">Discount</th>
               <th scope="col">Status</th>
-              <th scope="col">Edit</th>
           </tr>
 
       </thead>
@@ -20,10 +19,10 @@
               <td>{{row.promoId}}</td>
               <td>{{row.code}}</td>
               <td>{{row.discount}}</td>
-               <td>{{row.status}}</td>
+
               <td>
                 <!-- (click)="fill(row)" -->
-                  <button  type="button" class="btn btn-success" routerLink="/invoice">Edit</button>
+                  <button  type="button" class="btn btn-success" (click)="changeStatus(i)">{{row.status}}</button>
               </td>
           </tr>
 

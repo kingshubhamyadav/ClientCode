@@ -27,7 +27,7 @@
               </td>
               <td>
                 <!-- (click)="fill(row)" -->
-                  <button  type="button" class="btn btn-success" routerLink="/invoice">Download Invoice</button>
+                  <button  type="button" class="btn btn-success" (click)="invoice(i,row.orderIdInPayment)">Download Invoice</button>
               </td>
           </tr>
 
