@@ -7,8 +7,8 @@
               <th scope="col">Time Of Wash</th>
               <th scope="col">Date Of Wash</th>
               <th scope="col">Location</th>
-              <!-- <th scope="col">Amount Paid</th>
-              <th scope="col">Status</th> -->
+             <!-- <th scope="col">Amount Paid</th> -->
+              <th scope="col">Rating</th>
               <th scope="col">Download</th>
           </tr>
 
@@ -21,8 +21,10 @@
               <td>{{row.timeOfWash}}</td>
               <td>{{row.dateOfWash}}</td>
               <td>{{row.location}}</td>
-              <!-- <td>{{row.amountPaid}}</td> -->
-              <!-- <td>{{row.totalDiscount}}</td> -->
+              <td>
+                <!-- (click)="fill(row)" -->
+                  <button  type="button" class="btn btn-danger" >Give Rating</button>
+              </td>
               <td>
                 <!-- (click)="fill(row)" -->
                   <button  type="button" class="btn btn-success" routerLink="/invoice">Download Invoice</button>

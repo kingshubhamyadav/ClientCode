@@ -33,4 +33,22 @@ export class OrderHistoryComponent implements OnInit {
     })
   }
 
+  // giveRating(){
+
+  //   Swal.fire({
+  //     title: 'How old are you?',
+  //     icon: 'question',
+  //     input: 'range',
+  //     inputLabel: 'Your age',
+  //     inputAttributes: {
+  //       min: 1,
+  //       max: 5,
+  //       step: 1
+  //     },
+  //     inputValue: 5
+  //   })
+
+
+  // }
+
 }

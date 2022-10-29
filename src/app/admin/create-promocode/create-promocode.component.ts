@@ -27,7 +27,7 @@ export class CreatePromocodeComponent implements OnInit {
           title: 'Promocode created successfully',
           //footer: '<a href="">Why do I have this issue?</a>'
         })
-        this.router.navigate(['/adminHome']);
+        this.router.navigate(['/all-promocode']);
       },
       error:(response)=>{
         Swal.fire({

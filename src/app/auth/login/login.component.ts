@@ -46,6 +46,23 @@ export class LoginComponent implements OnInit {
         if( localStorage.getItem('role')=='Admin'){
           this.router.navigate(['/adminHome']);
           }
+          //notify pop up
+          const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.addEventListener('mouseenter', Swal.stopTimer)
+              toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+          })
+
+          Toast.fire({
+            icon: 'success',
+            title: 'Signed in successfully'
+          })
 
       },
       err => {

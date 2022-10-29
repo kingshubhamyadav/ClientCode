@@ -24,7 +24,7 @@ export class CreateWasherComponent implements OnInit {
         title: 'Washer created successfully',
         //footer: '<a href="">Why do I have this issue?</a>'
       })
-      this.router.navigate(['/adminHome']);
+      this.router.navigate(['/all-washer']);
     },
     err => {
       Swal.fire({
