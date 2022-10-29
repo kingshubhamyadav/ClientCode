@@ -17,7 +17,7 @@ export class CreateServicesComponent implements OnInit {
   }
   serviceInfo(ser:CreateService){
     this.adminService.createService(ser).subscribe();
-    this.router.navigate(['/orderHistory']);
+   // this.router.navigate(['/all-services']);
   }
 
 

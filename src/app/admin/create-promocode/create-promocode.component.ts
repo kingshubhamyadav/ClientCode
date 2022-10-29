@@ -21,7 +21,7 @@ export class CreatePromocodeComponent implements OnInit {
     this.adminService.createPromocode(promo).subscribe({
       next:(info :CreatePromocode)=>{
         console.log(info);
-        this.router.navigate(['/orderHistory']);
+        this.router.navigate(['/all-promocode']);
       }
     });
   }

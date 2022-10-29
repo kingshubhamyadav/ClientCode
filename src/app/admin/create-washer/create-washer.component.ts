@@ -17,7 +17,7 @@ export class CreateWasherComponent implements OnInit {
   }
   washerInfo(user:CreateWasher){
     this.adminService.createWasher(user).subscribe();
-    this.router.navigate(['/orderHistory']);
+    this.router.navigate(['/all-washer']);
   }
 
 }

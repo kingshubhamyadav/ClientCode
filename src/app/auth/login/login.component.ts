@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AuthService } from 'src/app/service/auth.service';
 import jwt_decode from 'jwt-decode';
 import { User } from 'src/app/models/user';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -43,6 +44,23 @@ export class LoginComponent implements OnInit {
         if( localStorage.getItem('role')=='Admin'){
           this.router.navigate(['/adminHome']);
           }
+          //notify pop up
+          const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.addEventListener('mouseenter', Swal.stopTimer)
+              toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+          })
+
+          Toast.fire({
+            icon: 'success',
+            title: 'Signed in successfully'
+          })
 
       });
 
