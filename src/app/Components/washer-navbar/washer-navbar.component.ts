@@ -9,10 +9,11 @@ import Swal from 'sweetalert2';
 })
 export class WasherNavbarComponent implements OnInit {
 
-  constructor(private router:Router) { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
+
   logout(){
     Swal.fire({
       title: 'Are you sure?',

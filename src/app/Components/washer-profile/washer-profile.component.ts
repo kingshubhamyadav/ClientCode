@@ -26,13 +26,9 @@ export class WasherProfileComponent implements OnInit {
       lastName: ['', Validators.required],
       email: ['', Validators.required],
       phoneNumber: ['', [Validators.required,Validators.pattern("^[0-9]{10}$")]],
-      pincode: ['', [Validators.required,Validators.pattern("^[0-9]{6}$")]],
-      city: ['', Validators.required],
-      state: ['', Validators.required]
     })
 
-    //let id = localStorage.getItem('userId');
-    let id = 1;
+    let id = localStorage.getItem('userId');
     this.getProfileInfo(id);
   }
 
@@ -40,7 +36,7 @@ export class WasherProfileComponent implements OnInit {
     return this.washerService.getProfile(id)
       .subscribe(res => {
         this.profiles = res;
-        //console.log(this.profiles.phoneNumber);
+        console.log(this.profiles.phone);
         this.imgUrl = this.profiles.img;
       },
       err => {
@@ -57,10 +53,7 @@ export class WasherProfileComponent implements OnInit {
     this.formValue.controls['firstName'].setValue(profiles.firstName)
     this.formValue.controls['lastName'].setValue(profiles.lastName)
     this.formValue.controls['email'].setValue(profiles.email)
-    this.formValue.controls['phoneNumber'].setValue(profiles.phoneNumber)
-    this.formValue.controls['pincode'].setValue(profiles.pincode)
-    this.formValue.controls['city'].setValue(profiles.city)
-    this.formValue.controls['state'].setValue(profiles.state)
+    this.formValue.controls['phoneNumber'].setValue(profiles.phone)
   }
 
   editProfile(id: any) {
@@ -68,10 +61,7 @@ export class WasherProfileComponent implements OnInit {
     this.profileObj.firstName = this.formValue.value.firstName;
     this.profileObj.lastName = this.formValue.value.lastName;
     this.profileObj.email = this.formValue.value.email;
-    this.profileObj.phoneNumber = this.formValue.value.phoneNumber;
-    this.profileObj.pincode = this.formValue.value.pincode;
-    this.profileObj.city = this.formValue.value.city;
-    this.profileObj.state = this.formValue.value.state;
+    this.profileObj.phone = this.formValue.value.phoneNumber;
 
     this.washerService.updateProfile(id, this.profileObj)
       .subscribe(res => {

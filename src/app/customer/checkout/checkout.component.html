@@ -23,7 +23,7 @@
             <select [(ngModel)]="checkout.washerUserId" class="form-control" name="carType" >
               <option value="{{row.userId}}" *ngFor="let row of washers">{{row.firstName}}</option>
             </select> -->
-            <div class="row">
+            <!-- <div class="row">
               <div class="col-50">
                 <label for="state">State</label>
                 <input  type="text" id="state" name="state" placeholder="NY">
@@ -32,7 +32,7 @@
                 <label for="zip">Pin</label>
                 <input type="text" id="zip" name="zip" placeholder="10001">
               </div>
-            </div>
+            </div> -->
           </div>
 
           <div class="col-50">
@@ -45,11 +45,11 @@
               <option value="sedan">Sedan</option>
               <option value="hatchback">Hatchback</option>
               <option value="suv">SUV</option>
-              <option value="travler">Travler</option>
+              <option value="travler">Traveller</option>
             </select>
             <small [class.d-none]="carType.valid || carType.untouched" class="text-danger">Car type is required.</small>
             <label for="carImg">Car Img</label>
-            <input type="file" class="form-control" id="carImg" name="carImg" placeholder="September">
+            <input (change)="onSelectFile($event)" type="file" class="form-control" id="carImg" name="carImg" placeholder="September">
 
             <div class="row">
               <div class="col-50">
@@ -60,7 +60,7 @@
                 <label for="coupon"> </label>
                 <button (click)="getPromoCode(promo)" class="btn btn-primary">Apply</button>
               </div>
-              <p>{{coupenMessage}}</p>
+              <p class="text-danger">{{coupenMessage}}</p>
             </div>
           </div>
         </div>

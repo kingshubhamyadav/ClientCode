@@ -18,7 +18,13 @@ export class RegisterComponent implements OnInit {
   }
 
   register(user:UserRegister){
-    this.authService.register(user).subscribe(err=>
+    this.authService.register(user).subscribe(res =>{
+      Swal.fire({
+        icon: 'success',
+        title: 'Customer registered successfully.',
+        //footer: '<a href="">Why do I have this issue?</a>'
+      })
+    },err=>
       {
         Swal.fire({
           icon: 'error',

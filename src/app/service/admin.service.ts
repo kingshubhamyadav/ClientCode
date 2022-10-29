@@ -2,30 +2,31 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { CreatePromocode } from '../models/createPromo';
-import { CreateService } from '../models/createService';
-import { CreateWasher } from '../models/createWasher';
-import { GetAllCustomer } from '../models/getAllCustomer';
-import { GetAllWasher } from '../models/getAllWasher';
-import { GetPromoCode } from '../models/getPromoCode';
-import { Order } from '../models/order';
+import { CreatePromocode } from '../Models/createPromo';
+import { CreateService } from '../Models/createService';
+import { CreateWasher } from '../Models/createWasher';
+import { GetAllCustomer } from '../Models/getAllCustomer';
+import { GetAllWasher } from '../Models/getAllWasher';
+import { GetPromoCode } from '../Models/getPromoCode';
+import { acceptRequest } from '../Models/AcceptRequest.model';
+import { Order } from '../Models/order';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AdminService {
 
-  baseApiUrl:string=environment.apiUrl;
+  baseApiUrl: string = environment.apiUrl;
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-  public createPromocode(promo:CreatePromocode): Observable<CreatePromocode>{
-    return this.http.post<CreatePromocode>(this.baseApiUrl+'/Admin/CreatePromocode',promo
+  public createPromocode(promo: CreatePromocode): Observable<CreatePromocode> {
+    return this.http.post<CreatePromocode>(this.baseApiUrl + '/Admin/CreatePromocode', promo
     );
   }
 
-  public createWasher(user: CreateWasher): Observable<any>{
-    return this.http.post<any>(this.baseApiUrl+'/Admin/CreateWasher',user);
+  public createWasher(user: CreateWasher): Observable<any> {
+    return this.http.post<any>(this.baseApiUrl + '/Admin/CreateWasher', user);
   }
   public createService(ser: CreateService): Observable<any>{
     return this.http.post<any>(this.baseApiUrl+'/Admin/CreateServices',ser);
@@ -46,8 +47,10 @@ export class AdminService {
   public getAllOrder():Observable<Order[]>{
     return this.http.get<Order[]>(this.baseApiUrl+'/Admin/AllOrder');
   }
-  public getAllPromocode():Observable<GetPromoCode[]>{
-    return this.http.get<GetPromoCode[]>(this.baseApiUrl+'/Admin/AllPromocode');
+
+  //post method to send mail to customer once washer accepts order.
+  sendEmail(email: any) {
+    return this.http.post(`${environment.apiUrl}/Email`, email);
   }
  //change promo status
  public promoStatus(promo:GetPromoCode):Observable<GetPromoCode>{

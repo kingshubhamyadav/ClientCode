@@ -4,6 +4,7 @@ import { WasherApiService } from 'src/app/Services/washer-api.service';
 import { Router } from '@angular/router';
 import { ConnectableObservable } from 'rxjs';
 import { acceptRequest } from 'src/app/Models/AcceptRequest.model';
+import { SendMail } from 'src/app/Models/sendMail.model';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -11,13 +12,16 @@ import Swal from 'sweetalert2';
   templateUrl: './wash-requests.component.html',
   styleUrls: ['./wash-requests.component.css']
 })
+
 export class WashRequestsComponent implements OnInit {
 
   constructor(private router : Router, private washerService : WasherApiService) { }
   role=localStorage.getItem('role');
+  userId = JSON.parse(localStorage.getItem('userId') || '{}');
   requests! : Requests[];
   hideRequest : boolean = false;
   acceptRequestObj : acceptRequest = new acceptRequest();
+  sendMailObj : SendMail = new SendMail();
 
   ngOnInit(): void {
     this.getRequests();
@@ -27,7 +31,6 @@ export class WashRequestsComponent implements OnInit {
     this.washerService.getRequests()
         .subscribe(data => {
           this.requests = data;
-          console.log(this.requests);
         },
         err => {
           Swal.fire({
@@ -47,9 +50,13 @@ export class WashRequestsComponent implements OnInit {
     }
   }
 
-  accept(row : any){
+  accept(row : any, index :any){
     this.acceptRequestObj.orderId = row.orderId;
-    this.acceptRequestObj.washerId = "2";
+    this.acceptRequestObj.washerId = this.userId;
+
+    this.sendMailObj.to = this.requests[index].email;
+    this.sendMailObj.subject = "Wash Order has been accepted";
+    this.sendMailObj.message = `Hello Customer, this mail is to inform that your car wash order with orderId ${this.acceptRequestObj.orderId} has been accepted by a washer`;
 
     this.washerService.postWashRequest(this.acceptRequestObj)
         .subscribe(res => {
@@ -58,6 +65,7 @@ export class WashRequestsComponent implements OnInit {
             title: 'Order has been accepted successfully.'
             //footer: '<a href="">Why do I have this issue?</a>'
           })
+          this.sendMail(this.sendMailObj);
           this.getRequests();
         },
         err => {
@@ -68,5 +76,11 @@ export class WashRequestsComponent implements OnInit {
             //footer: '<a href="">Why do I have this issue?</a>'
           })
         })
+  }
+
+  sendMail(email : any)
+  {
+    this.washerService.sendEmail(email)
+    .subscribe();
   }
 }

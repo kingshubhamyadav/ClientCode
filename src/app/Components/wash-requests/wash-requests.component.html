@@ -15,7 +15,7 @@
         </thead>
         <tbody>
             <tr *ngFor="let row of requests, let i=index" class="row{{i}}">
-                <th scope="row">{{i}}</th>
+                <th scope="row">{{i+1}}</th>
                 <td>{{row.orderId}}</td>
                 <td>{{row.firstName | uppercase}} {{row.lastName | uppercase}}</td>
                 <td>{{row.timeOfWash}}</td>
@@ -23,7 +23,7 @@
                 <td>{{row.location}}</td>
                 <td>{{row.category}}</td>
                 <td>
-                    <button (click)="accept(row)" type="button" class="btn btn-success">Accept</button> &nbsp; &nbsp;
+                    <button (click)="accept(row, i)" type="button" class="btn btn-success">Accept</button> &nbsp; &nbsp;
                     <button (click)="decline('row'+i)" type="button" class="btn btn-danger">Decline</button>
                 </td>
             </tr>

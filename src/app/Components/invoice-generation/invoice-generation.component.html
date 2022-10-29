@@ -56,9 +56,17 @@
                         <input
                             [class.is-invalid]="formValue.get('waterUsed')?.invalid && formValue.get('waterUsed')?.touched"
                             type="text" formControlName="waterUsed" class="form-control">
-                        <small [class.d-none]="formValue.get('carImg')?.valid || formValue.get('waterUsed')?.untouched"
+                        <small [class.d-none]="formValue.get('waterUsed')?.valid || formValue.get('waterUsed')?.untouched"
                             class="text-danger">Amount of water used is
                             required</small>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Rating (out of 10)</label>
+                        <input
+                            [class.is-invalid]="formValue.get('rating')?.invalid && formValue.get('rating')?.touched"
+                            type="text" formControlName="rating" class="form-control">
+                        <small [class.d-none]="formValue.get('rating')?.valid || formValue.get('rating')?.untouched"
+                            class="text-danger">Rating for the customer is required.</small>
                     </div>
                     <img [class.d-none]="!hasImage" [src]="imgUrl" alt="Car Image" width="150">
                     <div class="mt-3">

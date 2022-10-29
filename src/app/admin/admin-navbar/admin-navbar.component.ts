@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-navbar',
@@ -9,7 +9,7 @@ import Swal from 'sweetalert2';
 })
 export class AdminNavbarComponent implements OnInit {
 
-  constructor(private router:Router) { }
+  constructor(private router : Router) { }
 
   ngOnInit(): void {
   }

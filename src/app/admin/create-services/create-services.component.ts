@@ -24,7 +24,7 @@ export class CreateServicesComponent implements OnInit {
         title: 'Service added successfully',
         //footer: '<a href="">Why do I have this issue?</a>'
       })
-      this.router.navigate(['/all-services']);
+      this.router.navigate(['/adminHome']);
     },
     err => {
       Swal.fire({

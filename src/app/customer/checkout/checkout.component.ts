@@ -5,6 +5,7 @@ import { allWasher } from 'src/app/models/allWasher';
 import { CustomerService } from 'src/app/service/customer.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { profileImage } from 'src/app/Models/profileImage.model';
 
 @Component({
   selector: 'app-checkout',
@@ -12,41 +13,42 @@ import Swal from 'sweetalert2';
   styleUrls: ['./checkout.component.css']
 })
 export class CheckoutComponent implements OnInit {
-  title='Checkout';
-  baseAmount:number=Number(localStorage.getItem('charges'));
-  totalAmount:number=Number(localStorage.getItem('charges'));
-  serviceName=localStorage.getItem('serviceName');
-  promo= new PromoCode();
-  checkout= new Checkout();
-  washers: allWasher[]=[];
+  title = 'Checkout';
+  baseAmount: number = Number(localStorage.getItem('charges'));
+  totalAmount: number = Number(localStorage.getItem('charges'));
+  washTypeId: number = Number(localStorage.getItem('washTypeId'));
+  serviceName = localStorage.getItem('serviceName');
+  promo = new PromoCode();
+  checkout = new Checkout();
+  washers: allWasher[] = [];
 
-  discount:string='0';
-  discountApplied:boolean=false;
-  coupenMessage:string='';
-  userId=Number(localStorage.getItem('userId'));
-  constructor(private customrServices:CustomerService,private router:Router) { }
-  role=localStorage.getItem('role');
+  discount: string = '0';
+  discountApplied: boolean = false;
+  coupenMessage: string = '';
+  userId = Number(localStorage.getItem('userId'));
+  constructor(private customrServices: CustomerService, private router: Router) { }
+  role = localStorage.getItem('role');
+  imgUrl = "";
 
   ngOnInit(): void {
-
   }
   getPromoCode(promo:PromoCode){
     promo.userId=Number(localStorage.getItem('userId'));
     this.customrServices.getPromoCode(promo).subscribe({
-      next:(discount:string)=>{
-        if(this.discountApplied){
-          this.checkout.amountPaid=this.totalAmount.toString();
+      next: (discount: string) => {
+        if (this.discountApplied) {
+          this.checkout.amountPaid = this.totalAmount.toString();
         }
-        else{
-        this.discount=discount;
-        this.checkout.code=promo.code;
-        this.checkout.totalDiscount=discount;
-        this.discountApplied=true;
-        this.totalAmount=this.totalAmount-Number(discount)
+        else {
+          this.discount = discount;
+          this.checkout.code = promo.code;
+          this.checkout.totalDiscount = discount;
+          this.discountApplied = true;
+          this.totalAmount = this.totalAmount - Number(discount)
         }
-        this.coupenMessage='Coupen Code Applied Successfully. Discount= '+discount +'₹';
+        this.coupenMessage = 'Coupen Code Applied Successfully. Discount= ' + discount + '₹';
       },
-      error:(response)=>{
+      error: (response) => {
         this.coupenMessage = response.error;
       }
     });
@@ -59,8 +61,8 @@ export class CheckoutComponent implements OnInit {
     this.checkout.amountPaid=this.totalAmount.toString();
     this.checkout.amountPaid=this.discount.toString();
     this.customrServices.checkoutInfo(checkout).subscribe({
-      next:(info :Checkout)=>{
-        this.checkout=info;
+      next: (info: Checkout) => {
+        this.checkout = info;
         Swal.fire({
           icon: 'success',
           title: 'Order placed successfully.'
@@ -68,7 +70,7 @@ export class CheckoutComponent implements OnInit {
         })
         this.router.navigate(['/orderHistory']);
       },
-      error:(response)=>{
+      error: (response) => {
         Swal.fire({
           icon: 'error',
           title: 'Oops...',
@@ -77,6 +79,22 @@ export class CheckoutComponent implements OnInit {
         })
       }
     });
+  }
+
+  onSelectFile(e: any) {
+    if (e.target.files) {
+      var reader = new FileReader();
+      reader.readAsDataURL(e.target.files[0]);
+      reader.onload = (event: any) => {
+        this.imgUrl = event.target.result;
+        this.checkout.carImg = this.imgUrl;
+        Swal.fire({
+          icon: 'success',
+          title: 'Car image added successfully.'
+          //footer: '<a href="">Why do I have this issue?</a>'
+        })
+      }
+    }
   }
 
 }

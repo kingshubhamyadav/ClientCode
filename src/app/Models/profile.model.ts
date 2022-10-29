@@ -4,9 +4,9 @@ export class Profile{
     firstName! : string;
     lastName! : string;
     email! : string;
-    phoneNumber! : string;
-    pincode! : string;
-    city! : string;
-    state! : string;
+    phone! : string;
+    // pincode! : string;
+    // city! : string;
+    // state! : string;
     img! : string;
 }

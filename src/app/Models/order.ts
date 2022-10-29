@@ -4,7 +4,7 @@ export interface Order{
   timeOfWash:string;
   dateOfWash:string;
   location:string;
-  washTypeId:string;
-  rating:string;
+  package:string;
+  userMail:string;
   orderStatus:string;
  }

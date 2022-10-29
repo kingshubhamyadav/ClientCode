@@ -14,13 +14,14 @@ export class CurrentOrdersComponent implements OnInit {
   constructor(private router : Router,private washerService : WasherApiService) { }
   role = localStorage.getItem('role');
   orders! : Orders[];
+  userId = Number(localStorage.getItem('userId'));
 
   ngOnInit(): void {
-    this.getCurrentOrders();
+    this.getCurrentOrders(this.userId);
   }
 
-  getCurrentOrders(){
-    this.washerService.getCurrentOrders()
+  getCurrentOrders(id : any){
+    this.washerService.getCurrentOrders(id)
         .subscribe(res =>{
           this.orders = res;
         },
