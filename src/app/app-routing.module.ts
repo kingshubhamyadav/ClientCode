@@ -13,7 +13,6 @@ import { WasherDashboardComponent } from './Components/washer-dashboard/washer-d
 import { WasherOrdersComponent } from './Components/washer-orders/washer-orders.component';
 import { WasherProfileComponent } from './Components/washer-profile/washer-profile.component';
 import { AboutUsComponent } from './about-us/about-us.component';
-import { ContactUsComponent } from './contact-us/contact-us.component';
 import { OrderHistoryComponent } from './customer/order-history/order-history.component';
 import { InvoiceComponent } from './customer/invoice/invoice.component';
 import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
@@ -36,37 +35,37 @@ import { WasherGuard } from './shared/washer.guard';
 const routes: Routes = [
   //customer
 //  {path:'',component:HomeComponent},
-  {path:'home',component:HomeComponent},//canActivate:[AuthGuard,CustomerGuard]},
+  {path:'home',component:HomeComponent,canActivate:[AuthGuard,CustomerGuard]},
   {path:'register',component:RegisterComponent},
   {path:'login',component:LoginComponent},
-  {path:'checkout',component:CheckoutComponent},//canActivate:[AuthGuard,CustomerGuard]},
-  {path:'orderHistory',component:OrderHistoryComponent},//canActivate:[AuthGuard,CustomerGuard]},
-  {path:'invoice',component:InvoiceComponent},//canActivate:[AuthGuard,CustomerGuard]},
-  {path:'profile',component:ProfileComponent},//canActivate:[AuthGuard,CustomerGuard]},  //need to modify
-  {path:'leadersBoards',component:LeadersBaoardComponent},//canActivate:[AuthGuard,CustomerGuard]},
+  {path:'checkout',component:CheckoutComponent,canActivate:[AuthGuard,CustomerGuard]},
+  {path:'orderHistory',component:OrderHistoryComponent,canActivate:[AuthGuard,CustomerGuard]},
+  {path:'invoice',component:InvoiceComponent,canActivate:[AuthGuard,CustomerGuard]},
+  {path:'profile',component:ProfileComponent,canActivate:[AuthGuard,CustomerGuard]},  //need to modify
+  {path:'leadersBoards',component:LeadersBaoardComponent,canActivate:[AuthGuard,CustomerGuard]},
 
-  {path:'aboutUs',component:AboutUsComponent},//canActivate:[AuthGuard,CustomerGuard]},
-  {path:'contactUs',component:ContactUsComponent},//canActivate:[AuthGuard,CustomerGuard]},
+  {path:'aboutUs',component:AboutUsComponent,canActivate:[AuthGuard,CustomerGuard]},
+  // {path:'contactUs',component:ContactUsComponent,canActivate:[AuthGuard,CustomerGuard]},
   //admin
-  {path:'adminHome',component:AdminHomeComponent},//canActivate:[AuthGuard,AdminGuard]},
-  {path:'adminNavbar',component:AdminNavbarComponent},//canActivate:[AuthGuard,AdminGuard]},
-  {path:'createPromocode',component:CreatePromocodeComponent},//canActivate:[AuthGuard,AdminGuard]},
-  {path:'createServices',component:CreateServicesComponent},//canActivate:[AuthGuard,AdminGuard]},
-  {path:'createWasher',component:CreateWasherComponent},//canActivate:[AuthGuard,AdminGuard]},
-  {path:'all-washer',component:AllWasherComponent},//canActivate:[AuthGuard,AdminGuard]},
-  {path:'all-customer',component:AllCustomerComponent},//canActivate:[AuthGuard,AdminGuard]},
-  {path:'pending-order',component:PendingOrderComponent},//canActivate:[AuthGuard,AdminGuard]},
-  {path:'all-order',component:AllOrderComponent},//canActivate:[AuthGuard,AdminGuard]},
-  {path:'all-promocode',component:PromocodeComponent},//canActivate:[AuthGuard,AdminGuard]},
+  {path:'adminHome',component:AdminHomeComponent,canActivate:[AuthGuard,AdminGuard]},
+  {path:'adminNavbar',component:AdminNavbarComponent,canActivate:[AuthGuard,AdminGuard]},
+  {path:'createPromocode',component:CreatePromocodeComponent,canActivate:[AuthGuard,AdminGuard]},
+  {path:'createServices',component:CreateServicesComponent,canActivate:[AuthGuard,AdminGuard]},
+  {path:'createWasher',component:CreateWasherComponent,canActivate:[AuthGuard,AdminGuard]},
+  {path:'all-washer',component:AllWasherComponent,canActivate:[AuthGuard,AdminGuard]},
+  {path:'all-customer',component:AllCustomerComponent,canActivate:[AuthGuard,AdminGuard]},
+  {path:'pending-order',component:PendingOrderComponent,canActivate:[AuthGuard,AdminGuard]},
+  {path:'all-order',component:AllOrderComponent,canActivate:[AuthGuard,AdminGuard]},
+  {path:'all-promocode',component:PromocodeComponent,canActivate:[AuthGuard,AdminGuard]},
   //washer
   { path: '', redirectTo: '/login', pathMatch: 'full' },
-  { path: 'dashboard', component: WasherDashboardComponent},//canActivate:[AuthGuard,WasherGuard] },
-  { path: 'washer-profile', component: WasherProfileComponent },
-  { path: 'wash-requests', component: WashRequestsComponent },
-  { path: 'invoice-generation', component: InvoiceGenerationComponent },
-  { path: 'washer-orders', component: WasherOrdersComponent },
-  { path: 'washer-orders/current-orders', component: CurrentOrdersComponent },
-  { path: 'washer-orders/past-orders', component: PastOrdersComponent },
+  { path: 'dashboard', component: WasherDashboardComponent,canActivate:[AuthGuard,WasherGuard] },
+  { path: 'washer-profile', component: WasherProfileComponent,canActivate:[AuthGuard,WasherGuard] },
+  { path: 'wash-requests', component: WashRequestsComponent,canActivate:[AuthGuard,WasherGuard] },
+  { path: 'invoice-generation', component: InvoiceGenerationComponent,canActivate:[AuthGuard,WasherGuard]},
+  { path: 'washer-orders', component: WasherOrdersComponent,canActivate:[AuthGuard,WasherGuard]},
+  { path: 'washer-orders/current-orders', component: CurrentOrdersComponent,canActivate:[AuthGuard,WasherGuard] },
+  { path: 'washer-orders/past-orders', component: PastOrdersComponent,canActivate:[AuthGuard,WasherGuard] },
   { path: '**', component: PageNotFoundComponent }
 ];
 
@@ -75,7 +74,7 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const routingComponents=[HomeComponent,RegisterComponent,LoginComponent,CheckoutComponent,ContactUsComponent,AboutUsComponent,
+export const routingComponents=[HomeComponent,RegisterComponent,LoginComponent,CheckoutComponent,AboutUsComponent,
   OrderHistoryComponent,AdminHomeComponent,AdminNavbarComponent,CreatePromocodeComponent,CreateServicesComponent,CreateWasherComponent,AllWasherComponent,
   AllCustomerComponent,PendingOrderComponent,AllOrderComponent,PromocodeComponent,ProfileComponent,LeadersBaoardComponent,
   WasherDashboardComponent, WasherProfileComponent, WashRequestsComponent, InvoiceGenerationComponent, WasherOrdersComponent, PageNotFoundComponent, InvoiceComponent]

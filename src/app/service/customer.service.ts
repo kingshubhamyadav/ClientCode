@@ -14,29 +14,42 @@ import { washType } from '../Models/washType';
 })
 export class CustomerService {
 
-  baseApiUrl:string=environment.apiUrl;
+  baseApiUrl: string = environment.apiUrl;
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-  public getAllWashType():Observable<washType[]>{
-    return this.http.get<washType[]>(this.baseApiUrl+'/Customer/OurServices');
+  public getAllWashType(): Observable<washType[]> {
+    return this.http.get<washType[]>(this.baseApiUrl + '/Customer/OurServices');
   }
-  public getPromoCode(promo:PromoCode): Observable<string>{
-    return this.http.post(this.baseApiUrl+'/Customer/CheckPromocode',promo,
-    {responseType: 'text'}
+
+  public getPromoCode(promo: PromoCode): Observable<string> {
+    return this.http.post(this.baseApiUrl + '/Customer/CheckPromocode', promo,
+      { responseType: 'text' }
     );
   }
-  public checkoutInfo(checkout:Checkout): Observable<Checkout>{
-    return this.http.post<Checkout>(this.baseApiUrl+'/Customer/StoreOrderDetail',checkout);
+
+  public checkoutInfo(checkout: Checkout): Observable<Checkout> {
+    return this.http.post<Checkout>(this.baseApiUrl + '/Customer/StoreOrderDetail', checkout);
   }
 
-  public getOrdersHistory(userId : number):Observable<orderHistory[]>{
-    return this.http.get<orderHistory[]>(this.baseApiUrl+'/Customer/OrderHistory?userId='+userId);
+  public getOrdersHistory(userId: number): Observable<orderHistory[]> {
+    return this.http.get<orderHistory[]>(this.baseApiUrl + '/Customer/OrderHistory/' + userId);
   }
-  public getAllWasher():Observable<allWasher[]>{
-    return this.http.get<allWasher[]>(this.baseApiUrl+'/Customer/GetWasher');
+
+  public getAllWasher(): Observable<allWasher[]> {
+    return this.http.get<allWasher[]>(this.baseApiUrl + '/Customer/GetWasher');
   }
-  public getUser(userId : number):Observable<GetUser[]>{
-    return this.http.get<GetUser[]>(this.baseApiUrl+'/Customer/GetUserDetail?userId='+userId);
+
+  public getUser(userId: number): Observable<GetUser> {
+    return this.http.get<GetUser>(this.baseApiUrl + `/Customer/view-profile/${userId}`);
+  }
+
+  updateProfile(id: any, data: any) {
+    return this.http.put(`${this.baseApiUrl}/Customer/edit-profile/${id}`, data);
+  }
+
+  //post method to upload photo to DB
+  uploadPhoto(data: any) {
+    return this.http.post(`${this.baseApiUrl}/Customer/upload-profile-img`, data);
   }
 }

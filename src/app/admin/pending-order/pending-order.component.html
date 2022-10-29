@@ -9,8 +9,7 @@
               <th scope="col">Time of Wash </th>
               <th scope="col">Date of Wash</th>
               <th scope="col">Location</th>
-              <th scope="col">Rating</th>
-              <th scope="col">Order Status</th>
+              <th scope="col">Package</th>
               <th scope="col">Assign</th>
           </tr>
 
@@ -25,11 +24,10 @@
               <td>{{row.timeOfWash}}</td>
               <td>{{row.dateOfWash}}</td>
               <td>{{row.location}}</td>
-              <td>{{row.rating}}</td>
-              <td>{{row.orderStatus}}</td>
+              <td>{{row.package}}</td>
               <td>
                 <!-- (click)="fill(row)" -->
-                  <button  type="button" class="btn btn-success" routerLink="/invoice">Assign</button>
+                  <button (click)="getWashers(row,i)" data-bs-toggle="modal" data-bs-target="#exampleModal" type="button" class="btn btn-success">Assign</button>
               </td>
           </tr>
 
@@ -40,6 +38,32 @@
       <div>
           <h1> No orders to display</h1>
       </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Available Washers</label>
+            <select [(ngModel)]="acceptRequestObj.washerId" class="form-control" name="carType" >
+              <option *ngFor="let row of washers, let i=index">{{row.username}}</option>
+            </select>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button id="cancel" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button (click)="assignWasher()" type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
   </div>
 </div>
 

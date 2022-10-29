@@ -44,18 +44,18 @@ export class WasherApiService {
   }
 
   //Get method to send the list of current orders to the UI
-  getCurrentOrders() : Observable<Orders[]>{
-    return this.http.get<Orders[]>(`${environment.apiUrl}/${this._url}/current-orders`);
+  getCurrentOrders(id : any) : Observable<Orders[]>{
+    return this.http.get<Orders[]>(`${environment.apiUrl}/${this._url}/current-orders/${id}`);
   }
 
   //Get method to send the list of past orders to the UI
-  getPastOrders() : Observable<Orders[]>{
-    return this.http.get<Orders[]>(`${environment.apiUrl}/${this._url}/past-orders`);
+  getPastOrders(id : any) : Observable<Orders[]>{
+    return this.http.get<Orders[]>(`${environment.apiUrl}/${this._url}/past-orders/${id}`);
   }
 
   //Get method to get the list of invoices to be sent
-  getInvoiceList() : Observable<Invoice[]>{
-    return this.http.get<Invoice[]>(`${environment.apiUrl}/${this._url}/invoice-details`);
+  getInvoiceList(userId : any) : Observable<Invoice[]>{
+    return this.http.get<Invoice[]>(`${environment.apiUrl}/${this._url}/invoice-details/${userId}`);
   }
 
   //Post method to post after wash details to DB
@@ -66,5 +66,10 @@ export class WasherApiService {
   //Post method for when washer accepts a wash request
   postWashRequest(data : acceptRequest){
     return this.http.post(`${environment.apiUrl}/${this._url}/accept-request`,data);
+  }
+
+  //post method to send mail to customer once washer accepts order.
+  sendEmail(email : any){
+    return this.http.post(`${environment.apiUrl}/Email`,email);
   }
 }

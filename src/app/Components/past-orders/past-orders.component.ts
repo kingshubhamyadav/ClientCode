@@ -13,14 +13,15 @@ export class PastOrdersComponent implements OnInit {
 
   constructor(private router : Router,private washerService : WasherApiService) { }
   role = localStorage.getItem('role');
+  userId = Number(localStorage.getItem('userId'));
   orders! :Orders[];
 
   ngOnInit(): void {
-    this.getPastOrders();
+    this.getPastOrders(this.userId);
   }
 
-  getPastOrders(){
-    return this.washerService.getPastOrders()
+  getPastOrders(id : any){
+    return this.washerService.getPastOrders(id)
                .subscribe(res => {
                 this.orders = res;
                },

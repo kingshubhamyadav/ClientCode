@@ -21,6 +21,7 @@ export class HomeComponent implements OnInit {
     .subscribe({
       next:(services)=>{
        this.services=services;
+       console.log(this.services[0]);
       },
       error:(response)=>{
         console.log(response);

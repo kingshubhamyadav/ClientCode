@@ -1,9 +1,10 @@
-export interface GetUser{
-  userId: number;
-  firstName: string;
-  lastName:string;
-  email:string;
-  phone:string;
-  role:string;
-  status:string;
+export class GetUser{
+  userId!: number;
+  firstName!: string;
+  lastName!:string;
+  email!:string;
+  phone!:string;
+  img!:string;
+  role!:string;
+  status!:string;
  }

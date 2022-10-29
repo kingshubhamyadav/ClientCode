@@ -18,6 +18,7 @@ export class InvoiceGenerationComponent implements OnInit {
   constructor(private router: Router, private washerService: WasherApiService,
     private formBuilder: FormBuilder) { }
   role = localStorage.getItem('role');
+  userId = Number(localStorage.getItem('userId'));
 
   invoices!: Invoice[];
   formValue!: FormGroup;
@@ -26,18 +27,19 @@ export class InvoiceGenerationComponent implements OnInit {
   hasImage: boolean = false;
 
   ngOnInit(): void {
-    this.getInvoiceList();
+    this.getInvoiceList(this.userId);
 
     this.formValue = this.formBuilder.group({
       orderId: [''],
       waterUsed: ['', Validators.required],
+      rating: ['',Validators.required],
       carImg: ['', Validators.required]
     })
   }
 
   //service call to get the list of incompleted wash orders
-  getInvoiceList() {
-    this.washerService.getInvoiceList()
+  getInvoiceList(userId : any) {
+    this.washerService.getInvoiceList(userId)
       .subscribe(data => {
         this.invoices = data;
       },
@@ -55,6 +57,7 @@ export class InvoiceGenerationComponent implements OnInit {
   postInvoiceDetails() {
     this.afterWashObj.orderId = this.formValue.value.orderId;
     this.afterWashObj.waterUsed = this.formValue.value.waterUsed;
+    this.afterWashObj.rating = this.formValue.value.rating;
 
     this.washerService.postInvoiceDetails(this.afterWashObj)
       .subscribe(res => {
@@ -66,7 +69,7 @@ export class InvoiceGenerationComponent implements OnInit {
         let ref = document.getElementById('cancel');
         ref?.click();
         this.formValue.reset();
-        this.getInvoiceList();
+        this.getInvoiceList(this.userId);
       },
         err => {
           Swal.fire({
