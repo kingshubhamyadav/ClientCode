@@ -1,27 +1,32 @@
-<div class="container" style="padding-top: 30px">
+<app-navbar *ngIf="role=='Customer'"></app-navbar><!--customer navbar-->
+
+<div class="container mt-5 mb-5" style="padding-top: 30px">
 <div class="row">
   <div class="col-75">
     <div class="container">
-      <form action="/action_page.php">
+      <form #checkoutForm="ngForm"> <!--action="/action_page.php">-->
 
         <div class="row">
           <div class="col-50">
             <h3> Order Detail</h3>
             <input type="hidden" [(ngModel)]="checkout.totalDiscount" name="discount" value={{discount}} >
             <label for="time"><i class="fa fa-user"></i> Time Of Wash</label>
-            <input class="form-control" [(ngModel)]="checkout.timeOfWash"  type="time" name="timeOfWash" >
+            <input required #time="ngModel" [class.is-invalid]="time.invalid && time.touched" class="form-control" [(ngModel)]="checkout.timeOfWash"  type="time" name="timeOfWash" >
+            <small [class.d-none]="time.valid || time.untouched" class="text-danger">Time of wash is required.</small>
             <label for="date"><i class="fa fa-envelope"></i> Date Of Wash</label>
-            <input type="date" id="inputdate" [(ngModel)]="checkout.dateOfWash"  name="date" class="form-control">
+            <input required #date="ngModel" [class.is-invalid]="date.invalid && date.touched" type="date" id="inputdate" [(ngModel)]="checkout.dateOfWash"  name="date" class="form-control">
+            <small [class.d-none]="date.valid || date.untouched" class="text-danger">Date of wash is required.</small>
             <label for="low"><i class="fa fa-address-card-o"></i> Location Of Wash</label>
-            <input type="text" id="adr" [(ngModel)]="checkout.location" name="location" placeholder="542 W. 15th Street">
-            <label for="washer"><i class="fa fa-car"></i> Chose Car Washer</label>
+            <input required #location="ngModel" [class.is-invalid]="date.invalid && date.touched" type="text" id="adr" [(ngModel)]="checkout.location" name="location" placeholder="542 W. 15th Street">
+            <small [class.d-none]="location.valid || location.untouched" class="text-danger">Location is required.</small>
+            <!-- <label for="washer"><i class="fa fa-car"></i> Chose Car Washer</label>
             <select [(ngModel)]="checkout.washerUserId" class="form-control" name="carType" >
               <option value="{{row.userId}}" *ngFor="let row of washers">{{row.firstName}}</option>
-            </select>
+            </select> -->
             <div class="row">
               <div class="col-50">
                 <label for="state">State</label>
-                <input type="text" id="state" name="state" placeholder="NY">
+                <input  type="text" id="state" name="state" placeholder="NY">
               </div>
               <div class="col-50">
                 <label for="zip">Pin</label>
@@ -33,31 +38,33 @@
           <div class="col-50">
             <h3>Car Details</h3>
             <label for="cname">Car Number</label>
-            <input type="text" id="cno" [(ngModel)]="checkout.carNumber" name="carNumber" placeholder="MH 20 FY 3633">
+            <input required #carNumber="ngModel" [class.is-invalid]="carNumber.invalid && carNumber.touched" type="text" id="cno" [(ngModel)]="checkout.carNumber" name="carNumber" placeholder="MH 20 FY 3633">
+            <small [class.d-none]="carNumber.valid || carNumber.untouched" class="text-danger">Car number is required.</small>
             <label for="carType">Car Type</label>
-            <select class="form-control" [(ngModel)]="checkout.carType" name="carType" >
+            <select required #carType="ngModel" [class.is-invalid]="carType.invalid && carType.touched" class="form-control" [(ngModel)]="checkout.carType" name="carType" >
               <option value="sedan">Sedan</option>
               <option value="hatchback">Hatchback</option>
               <option value="suv">SUV</option>
               <option value="travler">Travler</option>
             </select>
+            <small [class.d-none]="carType.valid || carType.untouched" class="text-danger">Car type is required.</small>
             <label for="carImg">Car Img</label>
             <input type="file" class="form-control" id="carImg" name="carImg" placeholder="September">
 
             <div class="row">
               <div class="col-50">
-                <label for="couupen">Coupen</label>
-                <input [(ngModel)]="promo.code" type="text" id="expyear" name="expyear" placeholder="COUPEN ">
+                <label for="couupen">Coupon</label>
+                <input [(ngModel)]="promo.code" type="text" id="expyear" name="expyear" placeholder="COUPON ">
               </div>
               <div class="col-50" style="padding-top: 15px">
-                <label for="coupen"> </label>
+                <label for="coupon"> </label>
                 <button (click)="getPromoCode(promo)" class="btn btn-primary">Apply</button>
               </div>
               <p>{{coupenMessage}}</p>
             </div>
           </div>
         </div>
-        <input type="button" (click)="checkoutInfo(checkout)" value="Continue to checkout" class="btn">
+        <input [disabled]="checkoutForm.form.invalid" type="button" (click)="checkoutInfo(checkout)" value="Continue to checkout" class="btn">
       </form>
     </div>
   </div>

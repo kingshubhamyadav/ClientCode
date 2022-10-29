@@ -1,4 +1,5 @@
 <!-- Dashboard page for washer profile -->
+<app-admin-navbar *ngIf="role=='Admin'"></app-admin-navbar><!--admin navbar-->
 <!-- Card item for viewing profile -->
 <div class="row col d-flex justify-content-center mt-5 my-5">
   <div class="col-sm-6">
@@ -6,7 +7,7 @@
       <div class="card-body">
         <h5 class="card-title">Promocode</h5>
         <p class="card-text">Create Your Promocode</p>
-        <button routerLink="/createPromocode" class="btn btn-primary">Create Promocode</button>
+        <button style="background-color: #f48db4;color:aliceblue;" routerLink="/createPromocode" class="btn">Create Promocode</button>
       </div>
     </div>
   </div>
@@ -19,7 +20,7 @@
       <div class="card-body">
         <h5 class="card-title">Washer</h5>
         <p class="card-text">Add new washer to take orders.</p>
-        <button routerLink="/createWasher" class="btn btn-primary">Create Washer</button>
+        <button style="background-color: #f48db4;color:aliceblue;" routerLink="/createWasher" class="btn">Create Washer</button>
       </div>
     </div>
   </div>
@@ -32,7 +33,7 @@
       <div class="card-body">
         <h5 class="card-title">Services</h5>
         <p class="card-text">Add new services for customers.</p>
-        <button routerLink="/createServices" class="btn btn-primary">Create Services</button>
+        <button style="background-color: #f48db4;color:aliceblue;" routerLink="/createServices" class="btn">Create Services</button>
       </div>
     </div>
   </div>

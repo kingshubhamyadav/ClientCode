@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Requests } from 'src/app/models/requests.model';
+import { Requests } from 'src/app/Models/requests.model';
 import { WasherApiService } from 'src/app/Services/washer-api.service';
 import { Router } from '@angular/router';
 import { ConnectableObservable } from 'rxjs';
-import { acceptRequest } from 'src/app/models/AcceptRequest.model';
+import { acceptRequest } from 'src/app/Models/AcceptRequest.model';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-wash-requests',
@@ -13,6 +14,7 @@ import { acceptRequest } from 'src/app/models/AcceptRequest.model';
 export class WashRequestsComponent implements OnInit {
 
   constructor(private router : Router, private washerService : WasherApiService) { }
+  role=localStorage.getItem('role');
   requests! : Requests[];
   hideRequest : boolean = false;
   acceptRequestObj : acceptRequest = new acceptRequest();
@@ -25,6 +27,15 @@ export class WashRequestsComponent implements OnInit {
     this.washerService.getRequests()
         .subscribe(data => {
           this.requests = data;
+          console.log(this.requests);
+        },
+        err => {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Something went wrong! Unable to fetch requests.',
+            //footer: '<a href="">Why do I have this issue?</a>'
+          })
         });
   }
 
@@ -42,11 +53,20 @@ export class WashRequestsComponent implements OnInit {
 
     this.washerService.postWashRequest(this.acceptRequestObj)
         .subscribe(res => {
-          alert("Wash request has been added successfully!");
+          Swal.fire({
+            icon: 'success',
+            title: 'Order has been accepted successfully.'
+            //footer: '<a href="">Why do I have this issue?</a>'
+          })
           this.getRequests();
         },
         err => {
-          alert("Something went wrong");
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Something went wrong!',
+            //footer: '<a href="">Why do I have this issue?</a>'
+          })
         })
   }
 }

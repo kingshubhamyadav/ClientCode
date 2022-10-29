@@ -22,6 +22,7 @@ import { PastOrdersComponent } from './Components/past-orders/past-orders.compon
 
 import { NavbarComponent } from './customer/navbar/navbar.component';
 import { AuthInterceptor } from './service/auth.interceptor';
+import { WasherNavbarComponent } from './Components/washer-navbar/washer-navbar.component';
 
 
 
@@ -41,6 +42,7 @@ import { AuthInterceptor } from './service/auth.interceptor';
     PageNotFoundComponent,
     CurrentOrdersComponent,
     PastOrdersComponent,
+    WasherNavbarComponent,
 
   ],
   imports: [

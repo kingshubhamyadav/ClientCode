@@ -1,24 +1,25 @@
+<app-washer-navbar *ngIf="role=='Washer'"></app-washer-navbar><!--washer navbar-->
 <!-- card item to view current orders -->
-<div class="row col d-flex justify-content-center mt-3">
+<div class="row col d-flex justify-content-center mt-5">
     <div class="col-sm-6">
       <div class="card">
         <div class="card-body">
           <h5 class="card-title">Current Orders</h5>
           <p class="card-text">View accepted and in-progress orders here.</p>
-          <button routerLink="current-orders" class="btn btn-primary">View Orders</button>
+          <button style="background-color: #febe7e;color:aliceblue;" routerLink="current-orders" class="btn">View Orders</button>
         </div>
       </div>
     </div>
   </div>
 
   <!-- card item for viewing past orders -->
-  <div class="row col d-flex justify-content-center mt-3">
+  <div class="row col d-flex justify-content-center mt-5">
     <div class="col-sm-6">
       <div class="card">
         <div class="card-body">
           <h5 class="card-title">Past Orders</h5>
           <p class="card-text">View completed and cancelled orders here.</p>
-          <button routerLink="past-orders" class="btn btn-primary">View Orders</button>
+          <button style="background-color: #febe7e;color:aliceblue;" routerLink="past-orders" class="btn">View Orders</button>
         </div>
       </div>
     </div>

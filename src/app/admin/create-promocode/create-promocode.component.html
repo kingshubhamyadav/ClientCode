@@ -1,32 +1,37 @@
-<div  style="padding-top: 50px" class="container">
-  <div class="row main">
-    <div class="main-login main-center">
-      <form class="form-horizontal" method="post" action="#">
-        <div class="form-group">
-          <label style="padding-left: 300px" for="username" class="cols-sm-2 control-label">Coupen Code</label>
-          <div style="padding-left: 300px;padding-right :300px" class="cols-sm-10">
-            <div class="input-group">
-              <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-              <input type="text" [(ngModel)]="promo.code" name="code"class="form-control" placeholder="Enter Coupen Code"/>
+<app-admin-navbar *ngIf="role=='Admin'"></app-admin-navbar><!--admin navbar-->
+<div class="container mt-5">
+  <div style="padding-top: 50px">
+    <div class="row main">
+      <div class="main-login main-center">
+        <h1 style="text-align:center;">Create Coupon</h1>
+        <form #couponForm="ngForm" class="form-horizontal" method="post">
+          <div class="form-group">
+            <label style="padding-right: 300px" for="username" class="cols-sm-2 control-label">Coupon Code</label>
+            <div class="cols-sm-10">
+              <div class="input-group">
+                <input type="text" [class.is-invalid]="couponName.invalid && couponName.touched" #couponName="ngModel" [(ngModel)]="promo.code" name="code" class="form-control"
+                  placeholder="Enter Coupon Code" required/>
+              </div>
             </div>
+            <small style="padding-right: 220px" class="text-danger" [class.d-none]="couponName.valid || couponName.untouched">Coupon code is required.</small>
           </div>
-        </div>
 
-        <div  style="padding-top: 20px" class="form-group">
-          <label style="padding-left: 300px" for="password" class="cols-sm-2 control-label">Discount</label>
-          <div  style="padding-left: 300px;padding-right :300px" class="cols-sm-10">
-            <div class="input-group">
-              <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-              <input type="text" [(ngModel)]="promo.discount" name="discount" class="form-control"   placeholder="Enter Discount in Rupees"/>
+          <div style="padding-top: 20px" class="form-group">
+            <label style="padding-right: 340px" for="password" class="cols-sm-2 control-label">Discount</label>
+            <div class="cols-sm-10">
+              <div class="input-group">
+                <input type="text" #discount="ngModel" pattern="^\d*$" [class.is-invalid]="discount.invalid && discount.touched" [(ngModel)]="promo.discount" name="discount" class="form-control"
+                  placeholder="Enter Discount in Rupees" required/>
+              </div>
             </div>
+            <small style="padding-right: 200px" class="text-danger" [class.d-none]="discount.valid || discount.untouched">Discount amount is required.</small>
           </div>
-        </div>
-        <div style="padding-left: 300px;padding-top: 10px" class="form-group ">
-          <button type="button" (click)="createPromocodeInfo(promo)" class="btn btn-primary btn-lg btn-block login-button">Create </button>
-        </div>
-
-      </form>
-
+          <div class="form-group mt-5">
+            <button [disabled]="couponForm.form.invalid" type="button" (click)="createPromocodeInfo(promo)" class="btn btn-block login-button">Create
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
 </div>

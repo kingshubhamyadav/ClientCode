@@ -1,5 +1,7 @@
 <!-- Home page for customer profile -->
 <!-- Services that are provided -->
+<app-navbar *ngIf="role=='Customer'"></app-navbar><!--customer navbar-->
+
 <div class="row col d-flex justify-content-center mt-3" *ngFor="let service of services">
   <div class="col-sm-6">
     <div class="card">

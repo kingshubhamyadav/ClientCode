@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Order } from 'src/app/models/order';
+import { Order } from 'src/app/Models/order';
 import { AdminService } from 'src/app/service/admin.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-all-order',
@@ -11,7 +12,7 @@ export class AllOrderComponent implements OnInit {
 
   order:Order[]=[];
   constructor(private adminService:AdminService) { }
-
+  role = localStorage.getItem('role');
 
   ngOnInit(): void {
     this.adminService.getAllOrder()
@@ -21,7 +22,12 @@ export class AllOrderComponent implements OnInit {
        console.log(order);
       },
       error:(response)=>{
-        console.log(response);
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Something went wrong! Unable to fetch all orders!',
+          //footer: '<a href="">Why do I have this issue?</a>'
+        })
       }
     })
   }

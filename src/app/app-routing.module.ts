@@ -31,36 +31,36 @@ import { LeadersBaoardComponent } from './customer/leaders-baoard/leaders-baoard
 import { AuthGuard } from './shared/auth.guard';
 import { CustomerGuard } from './shared/customer.guard';
 import { AdminGuard } from './shared/admin.guard';
-
+import { WasherGuard } from './shared/washer.guard';
 
 const routes: Routes = [
   //customer
 //  {path:'',component:HomeComponent},
-  {path:'home',component:HomeComponent,canActivate:[AuthGuard,CustomerGuard]},
+  {path:'home',component:HomeComponent},//canActivate:[AuthGuard,CustomerGuard]},
   {path:'register',component:RegisterComponent},
   {path:'login',component:LoginComponent},
-  {path:'checkout',component:CheckoutComponent,canActivate:[AuthGuard,CustomerGuard]},
-  {path:'orderHistory',component:OrderHistoryComponent,canActivate:[AuthGuard,CustomerGuard]},
-  {path:'invoice',component:InvoiceComponent,canActivate:[AuthGuard,CustomerGuard]},
-  {path:'profile',component:ProfileComponent,canActivate:[AuthGuard,CustomerGuard]},
-  {path:'leadersBoards',component:LeadersBaoardComponent,canActivate:[AuthGuard,CustomerGuard]},
+  {path:'checkout',component:CheckoutComponent},//canActivate:[AuthGuard,CustomerGuard]},
+  {path:'orderHistory',component:OrderHistoryComponent},//canActivate:[AuthGuard,CustomerGuard]},
+  {path:'invoice',component:InvoiceComponent},//canActivate:[AuthGuard,CustomerGuard]},
+  {path:'profile',component:ProfileComponent},//canActivate:[AuthGuard,CustomerGuard]},  //need to modify
+  {path:'leadersBoards',component:LeadersBaoardComponent},//canActivate:[AuthGuard,CustomerGuard]},
 
-  {path:'aboutUs',component:AboutUsComponent,canActivate:[AuthGuard,CustomerGuard]},
-  {path:'contactUs',component:ContactUsComponent,canActivate:[AuthGuard,CustomerGuard]},
+  {path:'aboutUs',component:AboutUsComponent},//canActivate:[AuthGuard,CustomerGuard]},
+  {path:'contactUs',component:ContactUsComponent},//canActivate:[AuthGuard,CustomerGuard]},
   //admin
-  {path:'adminHome',component:AdminHomeComponent,canActivate:[AuthGuard,AdminGuard]},
-  {path:'adminNavbar',component:AdminNavbarComponent,canActivate:[AuthGuard,AdminGuard]},
-  {path:'createPromocode',component:CreatePromocodeComponent,canActivate:[AuthGuard,AdminGuard]},
-  {path:'createServices',component:CreateServicesComponent,canActivate:[AuthGuard,AdminGuard]},
-  {path:'createWasher',component:CreateWasherComponent,canActivate:[AuthGuard,AdminGuard]},
-  {path:'all-washer',component:AllWasherComponent,canActivate:[AuthGuard,AdminGuard]},
-  {path:'all-customer',component:AllCustomerComponent,canActivate:[AuthGuard,AdminGuard]},
-  {path:'pending-order',component:PendingOrderComponent,canActivate:[AuthGuard,AdminGuard]},
-  {path:'all-order',component:AllOrderComponent,canActivate:[AuthGuard,AdminGuard]},
-  {path:'all-promocode',component:PromocodeComponent,canActivate:[AuthGuard,AdminGuard]},
+  {path:'adminHome',component:AdminHomeComponent},//canActivate:[AuthGuard,AdminGuard]},
+  {path:'adminNavbar',component:AdminNavbarComponent},//canActivate:[AuthGuard,AdminGuard]},
+  {path:'createPromocode',component:CreatePromocodeComponent},//canActivate:[AuthGuard,AdminGuard]},
+  {path:'createServices',component:CreateServicesComponent},//canActivate:[AuthGuard,AdminGuard]},
+  {path:'createWasher',component:CreateWasherComponent},//canActivate:[AuthGuard,AdminGuard]},
+  {path:'all-washer',component:AllWasherComponent},//canActivate:[AuthGuard,AdminGuard]},
+  {path:'all-customer',component:AllCustomerComponent},//canActivate:[AuthGuard,AdminGuard]},
+  {path:'pending-order',component:PendingOrderComponent},//canActivate:[AuthGuard,AdminGuard]},
+  {path:'all-order',component:AllOrderComponent},//canActivate:[AuthGuard,AdminGuard]},
+  {path:'all-promocode',component:PromocodeComponent},//canActivate:[AuthGuard,AdminGuard]},
   //washer
-  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
-  { path: 'dashboard', component: WasherDashboardComponent },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: 'dashboard', component: WasherDashboardComponent},//canActivate:[AuthGuard,WasherGuard] },
   { path: 'washer-profile', component: WasherProfileComponent },
   { path: 'wash-requests', component: WashRequestsComponent },
   { path: 'invoice-generation', component: InvoiceGenerationComponent },
@@ -78,6 +78,6 @@ export class AppRoutingModule { }
 export const routingComponents=[HomeComponent,RegisterComponent,LoginComponent,CheckoutComponent,ContactUsComponent,AboutUsComponent,
   OrderHistoryComponent,AdminHomeComponent,AdminNavbarComponent,CreatePromocodeComponent,CreateServicesComponent,CreateWasherComponent,AllWasherComponent,
   AllCustomerComponent,PendingOrderComponent,AllOrderComponent,PromocodeComponent,ProfileComponent,LeadersBaoardComponent,
-  WasherDashboardComponent, WasherProfileComponent, WashRequestsComponent, InvoiceGenerationComponent, WasherOrdersComponent, PageNotFoundComponent]
+  WasherDashboardComponent, WasherProfileComponent, WashRequestsComponent, InvoiceGenerationComponent, WasherOrdersComponent, PageNotFoundComponent, InvoiceComponent]
 
 export const routingComponent = [WasherDashboardComponent, WasherProfileComponent, WashRequestsComponent, InvoiceGenerationComponent, WasherOrdersComponent, PageNotFoundComponent, CurrentOrdersComponent, PastOrdersComponent];

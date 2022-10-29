@@ -1,127 +1,134 @@
+<app-navbar *ngIf="role=='Customer'"></app-navbar>
+<!--customer navbar-->
 <div class="container mt-5">
-  <div class="main-body">
+    <div class="main-body">
 
-      <!-- /Breadcrumb -->
+        <!-- /Breadcrumb -->
 
-      <div class="row gutters-sm">
-          <!-- Profile photo and Name -->
-          <div class="col-md-4 mb-3">
-              <div class="card">
-                  <div class="card-body">
-                      <div class="d-flex flex-column align-items-center text-center">
-                          <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Washer"
-                              class="rounded-circle" width="150">
-                          <div class="mt-3">
-                              <h4>John Doe</h4>
-                              <button style="color:aliceblue;" class="btn btn-info">Upload Image</button>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-          <!-- Washer Details -->
-          <div class="col-md-8" >
-              <div class="card mb-3">
-                  <div class="card-body" >
-                      <div class="row">
-                          <div class="col-sm-3">
-                              <h6 class="mb-0">First Name</h6>
-                          </div>
-                          <div class="col-sm-9 text-secondary" >
-                              <!-- {{user.firstName}}  -->
-                          </div>
-                      </div>
-                      <hr>
-                      <div class="row">
-                          <div class="col-sm-3">
-                              <h6 class="mb-0">Last Name</h6>
-                          </div>
-                          <div class="col-sm-9 text-secondary">
-                              <!-- {{user.lastName}} --> fdghj
-                          </div>
-                      </div>
-                      <hr>
-                      <div class="row">
-                          <div class="col-sm-3">
-                              <h6 class="mb-0">Email</h6>
-                          </div>
-                          <div class="col-sm-9 text-secondary">
-                              <!-- {{user.email}} -->
-                          </div>
-                      </div>
-                      <hr>
-                      <div class="row">
-                          <div class="col-sm-3">
-                              <h6 class="mb-0">Phone Number</h6>
-                          </div>
-                          <div class="col-sm-9 text-secondary">
-                              <!-- {{user.phone}} -->
-                          </div>
-                      </div>
-                      <hr>
+        <div class="row gutters-sm">
+            <!-- Profile photo and Name -->
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex flex-column align-items-center text-center">
+                            <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Washer"
+                                class="rounded-circle" width="150">
+                            <div class="mt-3">
+                                <h4>John Doe</h4>
+                                <button style="color:aliceblue;" class="btn btn-success">Upload Image</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Washer Details -->
+            <div class="col-md-8">
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">First Name</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                <!-- {{user.firstName}}  -->
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Last Name</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                <!-- {{user.lastName}} --> fdghj
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Email</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                <!-- {{user.email}} -->
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Phone Number</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                <!-- {{user.phone}} -->
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <!-- (click)="onEdit(profiles)" -->
+                                <button style="background-color: #155263;color:aliceblue;" type="button" class="btn"
+                                    data-bs-toggle="modal" data-bs-target="#exampleModal">Edit</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-                      <hr>
-                      <div class="row">
-                          <div class="col-sm-12">
-                            <!-- (click)="onEdit(profiles)" -->
-                              <button  type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                  data-bs-target="#exampleModal">Edit</button>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
-
-  </div>
+    </div>
 </div>
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-      <div class="modal-content">
-          <div class="modal-header">
-              <h1 class="modal-title fs-5" id="exampleModalLabel">Washer Details</h1>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-              <form>
-                  <div class="mb-3">
-                      <label class="form-label">First Name</label>
-                      <input  type="text" class="form-control">
-                  </div>
-                  <div class="mb-3">
-                      <label class="form-label">Last Name</label>
-                      <input  type="text" class="form-control">
-                  </div>
-                  <div class="mb-3">
-                      <label class="form-label">Email Address</label>
-                      <input  type="email" class="form-control">
-                  </div>
-                  <div class="mb-3">
-                      <label class="form-label">Phone Number</label>
-                      <input  type="text" class="form-control">
-                  </div>
-                  <div class="mb-3">
-                      <label class="form-label">PinCode</label>
-                      <input  type="text" class="form-control">
-                  </div>
-                  <div class="mb-3">
-                      <label class="form-label">City</label>
-                      <input  type="text" class="form-control">
-                  </div>
-                  <div class="mb-3">
-                      <label class="form-label">State</label>
-                      <input  type="text" class="form-control">
-                  </div>
-              </form>
-          </div>
-          <div class="modal-footer">
-              <button id="cancel" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button  type="button" class="btn btn-primary">Save changes</button>
-              <!-- (click)="editProfile(profiles.userId)" -->
-          </div>
-      </div>
-  </div>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Washer Details</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="formValue">
+                    <div class="mb-3">
+                        <label class="form-label">First Name</label>
+                        <input [class.is-invalid]="formValue.get('firstName')?.invalid && 
+                        formValue.get('firstName')?.touched" formControlName="firstName" type="text"
+                            class="form-control">
+                        <small [class.d-none]="formValue.get('firstName')?.valid || 
+                        formValue.get('firstName')?.untouched" class="text-danger">First name is required</small>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Last Name</label>
+                        <input [class.is-invalid]="formValue.get('lastName')?.invalid && 
+                        formValue.get('lastName')?.touched" formControlName="lastName" type="text"
+                            class="form-control">
+                        <small [class.d-none]="formValue.get('lastName')?.valid || 
+                        formValue.get('lastName')?.untouched" class="text-danger">Last name is required</small>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Email Address</label>
+                        <input [class.is-invalid]="formValue.get('email')?.invalid && 
+                        formValue.get('email')?.touched" formControlName="email" type="email" class="form-control">
+                        <small [class.d-none]="formValue.get('email')?.valid || 
+                        formValue.get('email')?.untouched" class="text-danger">Email address is required</small>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Phone Number</label>
+                        <input [class.is-invalid]="formValue.get('phoneNumber')?.invalid && 
+                        formValue.get('phoneNumber')?.touched" formControlName="phoneNumber" type="text"
+                            class="form-control">
+                        <div *ngIf="formValue.get('phoneNumber')?.invalid && formValue.get('phoneNumber')?.touched">
+                            <small *ngIf="formValue.get('phoneNumber')?.errors?.['required']" class="text-danger">Phone
+                                number is required</small>
+                            <small *ngIf="formValue.get('phoneNumber')?.errors?.['pattern']" class="text-danger">Phone
+                                number must be 10 digits</small>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button id="cancel" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button style="background-color: #155263;color:aliceblue;" [disabled]="!formValue.valid"
+                    (click)="editProfile(profiles.userId)" type="button" class="btn">Save
+                    changes</button>
+            </div>
+        </div>
+    </div>
 </div>
-

@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class InvoiceComponent implements OnInit {
 
   constructor() { }
+  role=localStorage.getItem('role');
 
   ngOnInit(): void {
   }

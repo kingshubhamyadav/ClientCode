@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
+import Swal from 'sweetalert2';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,12 @@ export class AuthGuard implements CanActivate {
     if(this.auth.IsLoggedIn()){
         return true;
     }
-    alert("You have not loged In")
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'Seems like you are trying to access this page without logging in. Login and try again.',
+      //footer: '<a href="">Why do I have this issue?</a>'
+    })
     this.router.navigate(['login']);
     return false;
   }

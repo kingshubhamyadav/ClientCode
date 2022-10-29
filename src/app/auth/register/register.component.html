@@ -1,69 +1,84 @@
-<div  style="padding-top: 10px" class="container">
-  <div class="row main">
-    <div class="main-login main-center">
-      <form class="form-horizontal" method="post" action="#">
-        <div class="form-group">
-          <label  for="firstName" class="cols-sm-2 control-label">First Name</label>
-          <div  class="cols-sm-10">
-            <div class="input-group">
-              <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-              <input type="text" [(ngModel)]="user.firstName" name="firstName"class="form-control" placeholder="Enter your First Name"/>
+<div class="container mt-5 mb-5" id="container">
+  <div style="padding-top: 10px" class="container">
+    <div class="row main">
+      <div class="main-login main-center">
+        <h1 style="text-align:center" class="mt-3 mb-3">Sign Up</h1>
+        <form #regForm="ngForm" class="form-horizontal" method="post">
+          <div class="form-group">
+            <label style="padding-right: 300px" for="firstName" class="cols-sm-2 control-label">First Name</label>
+            <div class="cols-sm-10">
+              <div class="input-group">
+                <input required #firstName="ngModel" [class.is-invalid]="firstName.invalid && firstName.touched" type="text" [(ngModel)]="user.firstName" name="firstName" class="form-control"
+                  placeholder="Enter your First Name" />
+              </div>
             </div>
+            <small style="padding-right: 230px" [class.d-none]="firstName.valid || firstName.untouched" class="text-danger">First name is required.</small>
           </div>
-        </div>
 
-        <div  style="padding-top: 20px" class="form-group">
-          <label  for="lastName" class="cols-sm-2 control-label">Last Name</label>
-          <div   class="cols-sm-10">
-            <div class="input-group">
-              <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-              <input type="text" [(ngModel)]="user.lastName" name="lastName" class="form-control"   placeholder="Enter your Last Name"/>
+          <div style="padding-top: 20px" class="form-group">
+            <label style="padding-right: 300px" for="lastName" class="cols-sm-2 control-label">Last Name</label>
+            <div class="cols-sm-10">
+              <div class="input-group">
+                <input required #lastName="ngModel" [class.is-invalid]="lastName.invalid && lastName.touched" type="text" [(ngModel)]="user.lastName" name="lastName" class="form-control"
+                  placeholder="Enter your Last Name" />
+              </div>
+            </div>
+            <small style="padding-right: 230px" [class.d-none]="lastName.valid || lastName.untouched" class="text-danger">Last name is required.</small>
+          </div>
+          <div style="padding-top: 20px" class="form-group">
+            <label style="padding-right: 300px" for="User Name" class="cols-sm-2 control-label">User Name</label>
+            <div class="cols-sm-10">
+              <div class="input-group">
+                <input required #userName="ngModel" [class.is-invalid]="userName.invalid && userName.touched" type="text" [(ngModel)]="user.userName" name="userName" class="form-control"
+                  placeholder="Enter your User Name" />
+              </div>
+            </div>
+            <small style="padding-right: 230px" [class.d-none]="userName.valid || userName.untouched" class="text-danger">User name is required.</small>
+          </div>
+          <div style="padding-top: 20px" class="form-group">
+            <label style="padding-right: 340px" for="email" class="cols-sm-2 control-label">Email</label>
+            <div class="cols-sm-10">
+              <div class="input-group">
+                <input required #email="ngModel" [class.is-invalid]="email.invalid && email.touched" type="email" [(ngModel)]="user.email" name="email" class="form-control"
+                  placeholder="Enter your Email" />
+              </div>
+            </div>
+            <small style="padding-right: 260px" [class.d-none]="email.valid || email.untouched" class="text-danger">Email is required.</small>
+          </div>
+          <div style="padding-top: 20px" class="form-group">
+            <label style="padding-right: 330px" for="phone" class="cols-sm-2 control-label">Phone</label>
+            <div class="cols-sm-10">
+              <div class="input-group">
+                <input pattern="^\d{10}$" required #number="ngModel" [class.is-invalid]="number.invalid && number.touched" type="text" [(ngModel)]="user.phone" name="phone" class="form-control"
+                  placeholder="Enter your Phone Number" />
+              </div>
+            </div>
+            <div *ngIf="number.errors && (number.invalid && number.touched)">
+              <small style="padding-right: 200px" *ngIf="number.errors?.['required']" class="text-danger">Phone number is required.</small>
+              <small style="padding-right: 140px" *ngIf="number.errors?.['pattern']" class="text-danger">Phone number must have 10 digits.</small>
             </div>
           </div>
-        </div>
-        <div  style="padding-top: 20px" class="form-group">
-          <label  for="User Name" class="cols-sm-2 control-label">User Name</label>
-          <div   class="cols-sm-10">
-            <div class="input-group">
-              <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-              <input type="text" [(ngModel)]="user.userName" name="userName" class="form-control"   placeholder="Enter your User Name"/>
+          <div style="padding-top: 20px" class="form-group">
+            <label style="padding-right: 310px" for="password" class="cols-sm-2 control-label">Password</label>
+            <div class="cols-sm-10">
+              <div class="input-group">
+                <input required pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%&?])[0-9a-zA-Z!@#$%&?]{8,}$" #password="ngModel" [class.is-invalid]="password.invalid && password.touched" type="password" [(ngModel)]="user.password" name="password" class="form-control"
+                  placeholder="Enter your Password" />
+              </div>
+            </div>
+            <div *ngIf="password.errors && (password.invalid && password.touched)">
+              <small style="padding-right: 240px" *ngIf="password.errors?.['required']" class="text-danger">Password is required.</small><br>
+              <small *ngIf="password.errors?.['pattern']" class="text-danger">Password must contain atleast 8 characters, 1 Upper case, 1 Lower case, 1 digit and 1 Special character</small>
             </div>
           </div>
-        </div>
-        <div  style="padding-top: 20px" class="form-group">
-          <label  for="email" class="cols-sm-2 control-label">Email</label>
-          <div   class="cols-sm-10">
-            <div class="input-group">
-              <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-              <input type="text" [(ngModel)]="user.email" name="email" class="form-control"   placeholder="Enter your Email"/>
-            </div>
-          </div>
-        </div>
-        <div  style="padding-top: 20px" class="form-group">
-          <label  for="phone" class="cols-sm-2 control-label">Phone</label>
-          <div   class="cols-sm-10">
-            <div class="input-group">
-              <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-              <input type="text" [(ngModel)]="user.phone" name="phone" class="form-control"   placeholder="Enter your Phone Number"/>
-            </div>
-          </div>
-        </div>
-        <div  style="padding-top: 20px" class="form-group">
-          <label for="password" class="cols-sm-2 control-label">Password</label>
-          <div   class="cols-sm-10">
-            <div class="input-group">
-              <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-              <input type="password" [(ngModel)]="user.password" name="password" class="form-control"   placeholder="Enter your Password"/>
-            </div>
-          </div>
-        </div>
 
 
-        <div style="padding-top: 10px" class="form-group ">
-          <button type="button" (click)="register(user)" class="btn btn-primary btn-lg btn-block login-button">Register</button>
-        </div>
-      </form>
+          <div style="padding-top: 10px" class="form-group mb-5">
+            <button [disabled]="regForm.form.invalid" type="button" (click)="register(user)" class="btn mb-5">Register</button>
+          </div>
+        </form>
 
+      </div>
     </div>
   </div>
 </div>

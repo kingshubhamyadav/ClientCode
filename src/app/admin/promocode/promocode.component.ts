@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { GetPromoCode } from 'src/app/models/getPromoCode';
+import { GetPromoCode } from 'src/app/Models/getPromoCode';
 import { AdminService } from 'src/app/service/admin.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-promocode',
@@ -11,7 +12,7 @@ export class PromocodeComponent implements OnInit {
 
   promo:GetPromoCode[]=[];
   constructor(private adminService:AdminService) { }
-
+  role = localStorage.getItem('role');
 
   ngOnInit(): void {
     this.adminService.getAllPromocode()
@@ -21,7 +22,12 @@ export class PromocodeComponent implements OnInit {
        console.log(promo);
       },
       error:(response)=>{
-        console.log(response);
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Something went wrong! Unable to fetch promocodes!',
+          //footer: '<a href="">Why do I have this issue?</a>'
+        })
       }
     })
   }

@@ -1,70 +1,47 @@
-<section id="contact">
+<app-navbar *ngIf="role=='Customer'"></app-navbar> <!-- Customer navbar -->
 
-  <h1 class="section-header">Contact Us</h1>
+<div class="container mt-5 mb-5">
+  <div style="padding-top: 50px" class="container">
+    <div class="row main">
+      <div class="main-login main-center">
+        <h1 style="text-align:center;">Contact Us</h1>
+        <form class="form-horizontal" method="post">
+          <div class="form-group">
+            <label style="padding-right: 300px" for="username" class="cols-sm-2 control-label">User Name</label>
+            <div class="cols-sm-10">
+              <div class="input-group">
+                <input type="text" name="catogries" class="form-control" placeholder="Enter your name here" />
+              </div>
+            </div>
+          </div>
 
-  <div class="contact-wrapper">
+          <div style="padding-top: 20px" class="form-group">
+            <label style="padding-right: 340px" for="password" class="cols-sm-2 control-label">Email</label>
+            <div class="cols-sm-10">
+              <div class="input-group">
+                <input type="email" name="charges" class="form-control"
+                  placeholder="Enter your email address here" />
+              </div>
+            </div>
+          </div>
 
-  <!-- Left contact page -->
+          <div style="padding-top: 20px" class="form-group">
+            <label style="padding-right: 320px" for="password" class="cols-sm-2 control-label">Message</label>
+            <div class="cols-sm-10">
+              <div class="input-group">
+                <textarea type="text" name="discription" class="form-control"
+                  placeholder="Enter your message here"></textarea>
+              </div>
+            </div>
+          </div>
 
-    <form id="contact-form" class="form-horizontal" role="form">
+          <div class="form-group mt-3 mb-5">
+            <button type="button" class="btn btn-block login-button">Send</button>
 
-      <div class="form-group">
-        <div class="col-sm-12">
-          <input type="text" class="form-control" id="name" placeholder="NAME" name="name" value="" required>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <div class="col-sm-12">
-          <input type="email" class="form-control" id="email" placeholder="EMAIL" name="email" value="" required>
-        </div>
-      </div>
-
-      <textarea class="form-control" rows="10" placeholder="MESSAGE" name="message" required></textarea>
-
-      <button class="btn btn-primary send-button" id="submit" type="submit" value="SEND">
-        <div class="alt-send-button">
-          <span class="send-text">SEND</span>
-        </div>
-
-      </button>
-
-    </form>
-
-  <!-- Left contact page -->
-
-      <div class="direct-contact-container">
-
-        <ul class="contact-list">
-          <li class="list-item"><i class="fa fa-map-marker fa-2x"><span class="contact-text place">EPIP,BANGALORE</span></i></li>
-
-          <li class="list-item"><i class="fa fa-phone fa-2x"><span class="contact-text phone"><a href="tel:1-212-555-5555" title="Give me a call">(212) 555-2368</a></span></i></li>
-
-          <li class="list-item"><i class="fa fa-envelope fa-2x"><span class="contact-text gmail"><a href="mailto:#" title="Send me an email">ondemandcarwash@gmail.com</a></span></i></li>
-
-        </ul>
-
-        <hr>
-        <ul class="social-media-list">
-          <li><a href="#" target="_blank" class="contact-icon">
-            <i class="fa-brands fa-github" aria-hidden="true"></i></a>
-          </li>
-          <li><a href="#" target="_blank" class="contact-icon">
-            <i class="fa-brands fa-codepen" aria-hidden="true"></i></a>
-          </li>
-          <li><a href="#" target="_blank" class="contact-icon">
-            <i class="fa-brands fa-twitter" aria-hidden="true"></i></a>
-          </li>
-          <li><a href="#" target="_blank" class="contact-icon">
-            <i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
-          </li>
-        </ul>
-        <hr>
-
-        <div class="copyright">&copy; ALL OF THE RIGHTS RESERVED</div>
+          </div>
+        </form>
 
       </div>
-
+    </div>
   </div>
-
-</section>
+</div>

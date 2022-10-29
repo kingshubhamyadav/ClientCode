@@ -2,13 +2,13 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { CreatePromocode } from '../models/createPromo';
-import { CreateService } from '../models/createService';
-import { CreateWasher } from '../models/createWasher';
-import { GetAllCustomer } from '../models/getAllCustomer';
-import { GetAllWasher } from '../models/getAllWasher';
-import { GetPromoCode } from '../models/getPromoCode';
-import { Order } from '../models/order';
+import { CreatePromocode } from '../Models/createPromo';
+import { CreateService } from '../Models/createService';
+import { CreateWasher } from '../Models/createWasher';
+import { GetAllCustomer } from '../Models/getAllCustomer';
+import { GetAllWasher } from '../Models/getAllWasher';
+import { GetPromoCode } from '../Models/getPromoCode';
+import { Order } from '../Models/order';
 
 @Injectable({
   providedIn: 'root'

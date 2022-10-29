@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Orders } from 'src/app/models/orders.model';
+import { Orders } from 'src/app/Models/orders.model';
 import { WasherApiService } from 'src/app/Services/washer-api.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-past-orders',
@@ -11,6 +12,7 @@ import { WasherApiService } from 'src/app/Services/washer-api.service';
 export class PastOrdersComponent implements OnInit {
 
   constructor(private router : Router,private washerService : WasherApiService) { }
+  role = localStorage.getItem('role');
   orders! :Orders[];
 
   ngOnInit(): void {
@@ -21,6 +23,14 @@ export class PastOrdersComponent implements OnInit {
     return this.washerService.getPastOrders()
                .subscribe(res => {
                 this.orders = res;
+               },
+               err => {
+                Swal.fire({
+                  icon: 'error',
+                  title: 'Oops...',
+                  text: 'Something went wrong! Unable to fetch past orders.',
+                  //footer: '<a href="">Why do I have this issue?</a>'
+                })
                });
   }
 }

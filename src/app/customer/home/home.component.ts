@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { washType } from 'src/app/models/washType';
+import { washType } from 'src/app/Models/washType';
 import { CustomerService } from 'src/app/service/customer.service';
 
 
@@ -14,6 +14,7 @@ export class HomeComponent implements OnInit {
   services:washType[]=[];
 
   constructor(private customerService:CustomerService, private router:Router) { }
+  role=localStorage.getItem('role');
 
   ngOnInit(): void {
     this.customerService.getAllWashType()

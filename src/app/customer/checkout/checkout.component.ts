@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Checkout } from 'src/app/models/checkout';
-import { PromoCode } from 'src/app/models/promoCode';
-import { allWasher } from 'src/app/models/allWasher';
+import { Checkout } from 'src/app/Models/checkout';
+import { PromoCode } from 'src/app/Models/promoCode';
+import { allWasher } from 'src/app/Models/allWasher';
 import { CustomerService } from 'src/app/service/customer.service';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-checkout',
@@ -24,17 +25,23 @@ export class CheckoutComponent implements OnInit {
   coupenMessage:string='';
   userId=Number(localStorage.getItem('userId'));
   constructor(private customrServices:CustomerService,private router:Router) { }
+  role=localStorage.getItem('role');
 
   ngOnInit(): void {
-    this.customrServices.getAllWasher()
-    .subscribe({
-      next:(washers)=>{
-       this.washers=washers;
-      },
-      error:(response)=>{
-        console.log(response);
-      }
-    });
+    // this.customrServices.getAllWasher()
+    // .subscribe({
+    //   next:(washers)=>{
+    //    this.washers=washers;
+    //   },
+    //   error:(response)=>{
+    //     Swal.fire({
+    //       icon: 'error',
+    //       title: 'Oops...',
+    //       text: 'Something went wrong! Unable to fetch washers.',
+    //       //footer: '<a href="">Why do I have this issue?</a>'
+    //     })
+    //   }
+    // });
   }
   getPromoCode(promo:PromoCode){
     this.customrServices.getPromoCode(promo).subscribe({
@@ -63,8 +70,20 @@ export class CheckoutComponent implements OnInit {
     this.customrServices.checkoutInfo(checkout).subscribe({
       next:(info :Checkout)=>{
         this.checkout=info;
-        console.log(info);
+        Swal.fire({
+          icon: 'success',
+          title: 'Order placed successfully.'
+          //footer: '<a href="">Why do I have this issue?</a>'
+        })
         this.router.navigate(['/orderHistory']);
+      },
+      error:(response)=>{
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Something went wrong! Unable to place order at the moment.',
+          //footer: '<a href="">Why do I have this issue?</a>'
+        })
       }
     });
   }

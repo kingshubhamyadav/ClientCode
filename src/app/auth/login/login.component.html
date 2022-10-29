@@ -1,4 +1,4 @@
-<div  style="padding-top: 50px" class="container">
+<!-- <div  style="padding-top: 50px" class="container">
   <div class="row main">
     <div class="main-login main-center">
       <form class="form-horizontal" method="post" action="#">
@@ -33,6 +33,39 @@
 
       </form>
 
+    </div>
+  </div>
+</div> -->
+
+
+
+<div class="container top" id="container">
+  <div class="form-container sign-in-container">
+    <form #loginForm="ngForm">
+      <h1 class="mb-5">Sign in</h1>
+      <!-- <div class="social-container">
+        <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+      </div> -->
+      <input required #userName="ngModel" [class.is-invalid]="userName.invalid && userName.touched" type="text"
+        [(ngModel)]="user.username" name="username" class="form-control" placeholder="Enter your Username" />
+      <small style="padding-right: 130px;" [class.d-none]="userName.valid || userName.untouched"
+        class="text-danger">User name is required.</small>
+      <input required #password="ngModel" [class.is-invalid]="password.invalid && password.touched" type="password"
+        [(ngModel)]="user.password" name="password" class="form-control" placeholder="Enter your Password" />
+      <small style="padding-right: 130px;" [class.d-none]="password.valid || password.untouched"
+        class="text-danger">Password is required.</small>
+      <button [disabled]="loginForm.form.invalid" type="button" (click)="login(user)" class="btn login-button mt-4">Sign In</button>
+    </form>
+  </div>
+  <div class="overlay-container">
+    <div class="overlay">
+      <div class="overlay-panel overlay-right">
+        <h1>Hello, there!</h1>
+        <p>Enter your personal details and start your journey with us</p>
+        <button type="button" routerLink="/register" class="ghost btn-primary btn-lg btn-block register-button">Register
+        </button>
+      </div>
     </div>
   </div>
 </div>

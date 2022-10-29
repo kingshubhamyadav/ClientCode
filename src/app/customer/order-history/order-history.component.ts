@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { orderHistory } from 'src/app/models/orderHistory';
+import { orderHistory } from 'src/app/Models/orderHistory';
 import { CustomerService } from 'src/app/service/customer.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-order-history',
@@ -12,6 +13,7 @@ export class OrderHistoryComponent implements OnInit {
   userId=Number(localStorage.getItem('userId'));
   orders:orderHistory[]=[];
   constructor(private customerService:CustomerService) { }
+  role=localStorage.getItem('role');
 
   ngOnInit(): void {
     this.customerService.getOrdersHistory(this.userId)
@@ -21,7 +23,12 @@ export class OrderHistoryComponent implements OnInit {
        console.log(orders);
       },
       error:(response)=>{
-        console.log(response);
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Something went wrong! Could not fetch order history.',
+          //footer: '<a href="">Why do I have this issue?</a>'
+        })
       }
     })
   }

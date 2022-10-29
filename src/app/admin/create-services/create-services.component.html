@@ -1,43 +1,47 @@
+<app-admin-navbar *ngIf="role=='Admin'"></app-admin-navbar><!--admin navbar-->
+<div class="container mt-5 mb-5">
 <div  style="padding-top: 50px" class="container">
   <div class="row main">
     <div class="main-login main-center">
-      <form class="form-horizontal" method="post" action="#">
+      <h1 style="text-align:center;">Create Service</h1>
+      <form #serviceForm="ngForm" class="form-horizontal" method="post" action="#">
         <div class="form-group">
-          <label style="padding-left: 300px" for="username" class="cols-sm-2 control-label">Catogery</label>
-          <div style="padding-left: 300px;padding-right :300px" class="cols-sm-10">
+          <label style="padding-right: 300px" for="username" class="cols-sm-2 control-label">Category</label>
+          <div class="cols-sm-10">
             <div class="input-group">
-              <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-              <input type="text" [(ngModel)]="ser.catogries" name="catogries"class="form-control" placeholder="Enter your Catogery"/>
+              <input required #category="ngModel" [class.is-invalid]="category.invalid && category.touched" type="text" [(ngModel)]="ser.catogries" name="catogries"class="form-control" placeholder="Enter your Category"/>
             </div>
           </div>
+          <small style="padding-right: 220px" [class.d-none]="category.valid || category.untouched" class="text-danger">Category is required.</small>
         </div>
 
         <div  style="padding-top: 20px" class="form-group">
-          <label style="padding-left: 300px" for="password" class="cols-sm-2 control-label">Discription</label>
-          <div  style="padding-left: 300px;padding-right :300px" class="cols-sm-10">
+          <label style="padding-right: 280px" for="password" class="cols-sm-2 control-label">Description</label>
+          <div  class="cols-sm-10">
             <div class="input-group">
-              <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-              <textarea type="text" [(ngModel)]="ser.discription" name="discription" class="form-control" >Enter Discription....</textarea>
+              <textarea required #description="ngModel" [class.is-invalid]="description.invalid && description.touched" type="text" [(ngModel)]="ser.discription" name="discription" class="form-control" placeholder="Enter description here."></textarea>
             </div>
           </div>
+          <small style="padding-right: 200px" [class.d-none]="description.valid || description.untouched" class="text-danger">Description is required.</small>
         </div>
 
         <div  style="padding-top: 20px" class="form-group">
-          <label style="padding-left: 300px" for="password" class="cols-sm-2 control-label">Charges</label>
-          <div  style="padding-left: 300px;padding-right :300px" class="cols-sm-10">
+          <label style="padding-right: 300px" for="password" class="cols-sm-2 control-label">Charges</label>
+          <div class="cols-sm-10">
             <div class="input-group">
-              <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-              <input type="text" [(ngModel)]="ser.charges" name="charges" class="form-control"   placeholder="Enter your Charges"/>
+              <input required #charges="ngModel" [class.is-invalid]="charges.invalid && charges.touched" type="text" [(ngModel)]="ser.charges" name="charges" class="form-control"   placeholder="Enter your Charges"/>
             </div>
           </div>
+          <small style="padding-right: 220px" [class.d-none]="charges.valid || charges.untouched" class="text-danger">Charges is required.</small>
         </div>
 
-        <div style="padding-left: 300px;padding-top: 10px" class="form-group ">
-          <button type="button" (click)="serviceInfo(ser)" class="btn btn-primary btn-lg btn-block login-button">Create</button>
+        <div class="form-group mt-3 mb-5">
+          <button [disabled]="serviceForm.form.invalid" type="button" (click)="serviceInfo(ser)" class="btn btn-block login-button">Create</button>
 
         </div>
       </form>
 
     </div>
   </div>
+</div>
 </div>

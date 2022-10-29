@@ -2,7 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/service/auth.service';
 import jwt_decode from 'jwt-decode';
-import { User } from 'src/app/models/user';
+import { User } from 'src/app/Models/user';
+import Swal from 'sweetalert2';
+
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -44,6 +47,14 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['/adminHome']);
           }
 
+      },
+      err => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Something went wrong! Sign In again.',
+          //footer: '<a href="">Why do I have this issue?</a>'
+        })
       });
 
   }

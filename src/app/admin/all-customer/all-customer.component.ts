@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { GetAllCustomer } from 'src/app/models/getAllCustomer';
+import { GetAllCustomer } from 'src/app/Models/getAllCustomer';
 import { AdminService } from 'src/app/service/admin.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-all-customer',
@@ -11,7 +12,7 @@ export class AllCustomerComponent implements OnInit {
   userId=Number(localStorage.getItem('userId'));
   cust:GetAllCustomer[]=[];
   constructor(private adminService:AdminService) { }
-
+  role = localStorage.getItem('role');
 
   ngOnInit(): void {
     this.adminService.getAllCustomer()
@@ -21,7 +22,12 @@ export class AllCustomerComponent implements OnInit {
        console.log(cust);
       },
       error:(response)=>{
-        console.log(response);
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Something went wrong! Unable to fetch customer details!',
+          //footer: '<a href="">Why do I have this issue?</a>'
+        })
       }
     })
   }
