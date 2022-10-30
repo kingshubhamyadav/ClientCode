@@ -2,14 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { CreatePromocode } from '../Models/createPromo';
-import { CreateService } from '../Models/createService';
-import { CreateWasher } from '../Models/createWasher';
-import { GetAllCustomer } from '../Models/getAllCustomer';
-import { GetAllWasher } from '../Models/getAllWasher';
-import { GetPromoCode } from '../Models/getPromoCode';
+import { CreatePromocode } from '../models/createPromo';
+import { CreateService } from '../models/createService';
+import { CreateWasher } from '../models/createWasher';
+import { GetAllCustomer } from '../models/getAllCustomer';
+import { GetAllWasher } from '../models/getAllWasher';
+import { GetPromoCode } from '../models/getPromoCode';
 import { acceptRequest } from '../Models/AcceptRequest.model';
-import { Order } from '../Models/order';
+import { Order } from '../models/order';
 
 @Injectable({
   providedIn: 'root'
@@ -38,6 +38,9 @@ export class AdminService {
 
   public getAllCustomer():Observable<GetAllCustomer[]>{
     return this.http.get<GetAllCustomer[]>(this.baseApiUrl+'/Admin/GetCustomer');
+  }
+  public getAllPromocode():Observable<GetPromoCode[]>{
+    return this.http.get<GetPromoCode[]>(this.baseApiUrl+'/Admin/AllPromocode');
   }
 
   public getPendingOrder():Observable<Order[]>{

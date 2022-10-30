@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CustomerRating } from 'src/app/models/customerRating';
 import { orderHistory } from 'src/app/models/orderHistory';
 import { CustomerService } from 'src/app/service/customer.service';
 import Swal from 'sweetalert2';
@@ -10,9 +11,10 @@ import Swal from 'sweetalert2';
   styleUrls: ['./order-history.component.css']
 })
 export class OrderHistoryComponent implements OnInit {
-   title='Order History';
+  title='Order History';
   userId=Number(localStorage.getItem('userId'));
   orders:orderHistory[]=[];
+  rating= new CustomerRating();
   constructor(private customerService:CustomerService,private router:Router) { }
   role=localStorage.getItem('role');
 
@@ -21,7 +23,6 @@ export class OrderHistoryComponent implements OnInit {
     .subscribe({
       next:(orders)=>{
        this.orders=orders;
-       console.log(orders);//comment it later
       },
       error:(response)=>{
         Swal.fire({
@@ -40,7 +41,6 @@ invoice(index:number,orderIdInPayment:number){
     .subscribe({
       next:(orders)=>{
        this.orders=orders;
-       console.log(orders);//comment it later
       },
 
     })
@@ -49,5 +49,24 @@ invoice(index:number,orderIdInPayment:number){
     localStorage.setItem('dateWashInv',this.orders[index].dateOfWash);
     this.router.navigate(['/invoice']);
 }
+
+orderId=0;
+getOrderId(orderIdInPayment:number){
+  this.orderId=orderIdInPayment;
+
+}
+// rating on order
+customerRating(rating:CustomerRating){
+  rating.orderId=this.orderId;
+  this.customerService.customerRating(rating).subscribe(res =>{
+    Swal.fire({
+      icon: 'success',
+      title: 'Rating Given Successfully',
+    })
+  })
+
+}
+
+
 
 }

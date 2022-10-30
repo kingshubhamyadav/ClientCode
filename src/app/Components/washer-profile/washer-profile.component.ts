@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { WasherApiService } from 'src/app/Services/washer-api.service';
 import { Profile } from 'src/app/Models/profile.model';
-import { profileImage } from 'src/app/Models/profileImage.model';
+import { profileImage } from 'src/app/models/profileImage.model';
 import Swal from 'sweetalert2';
 
 @Component({

@@ -5,7 +5,7 @@ import { allWasher } from 'src/app/models/allWasher';
 import { CustomerService } from 'src/app/service/customer.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
-import { profileImage } from 'src/app/Models/profileImage.model';
+import { profileImage } from 'src/app/models/profileImage.model';
 
 @Component({
   selector: 'app-checkout',

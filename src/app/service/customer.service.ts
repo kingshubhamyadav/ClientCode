@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { allWasher } from '../models/allWasher';
 import { Checkout } from '../models/checkout';
+import { CustomerRating } from '../models/customerRating';
 import { GetUser } from '../models/getUser';
 import { orderHistory } from '../models/orderHistory';
 import { PromoCode } from '../models/promoCode';
@@ -54,5 +55,9 @@ export class CustomerService {
   }
   public getPaymentDetails(orderIdInPayment : number):Observable<orderHistory[]>{
     return this.http.get<orderHistory[]>(this.baseApiUrl+'/Customer/GetPaymentDetails?orderId='+orderIdInPayment);
+  }
+  public customerRating(rating: CustomerRating): Observable<CustomerRating> {
+    return this.http.post<CustomerRating>(this.baseApiUrl + '/Customer/CustomerRating', rating
+    );
   }
 }

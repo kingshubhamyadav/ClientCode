@@ -23,7 +23,7 @@
               <td>{{row.location}}</td>
               <td>
                 <!-- (click)="fill(row)" -->
-                  <button  type="button" class="btn btn-danger" >Give Rating</button>
+                  <button  type="button" class="btn btn-danger" (click)="getOrderId(row.orderIdInPayment)" data-bs-toggle="modal" data-bs-target="#exampleModal" >Give Rating</button>
               </td>
               <td>
                 <!-- (click)="fill(row)" -->
@@ -37,6 +37,42 @@
   <div *ngIf="!orders || orders.length == 0"  class="container d-flex flex-column justify-content-center">
       <div>
           <h1> No orders to display</h1>
+      </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Invoice Details</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              <form >
+                  <div class="mb-3">
+                      <label class="form-label">Order ID</label>
+                      <input readonly="readonly" [(ngModel)]="rating.orderId" type="text" name="orderId" value="{{orderId}}" class="form-control">
+                  </div>
+                  <div class="mb-3">
+                      <label class="form-label">Rating (out of 10)</label>
+                      <input [(ngModel)]="rating.rate" type="text" name="rate"  class="form-control">
+                      <small class="text-danger">Rating for the customer is required.</small>
+                  </div>
+
+                  <div class="mt-3">
+
+                      <button  style="color:aliceblue;display: flex; align-items: flex-end;"
+                          class="btn btn-info ms-auto" (click)="customerRating(rating)" data-bs-dismiss="modal" >Give Rating</button>
+
+                  </div>
+              </form>
+          </div>
+          <div class="modal-footer">
+              <button type="button" id="cancel" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+          </div>
       </div>
   </div>
 </div>

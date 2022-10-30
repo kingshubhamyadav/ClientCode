@@ -3,7 +3,7 @@ import { GetUser } from 'src/app/models/getUser';
 import { CustomerService } from 'src/app/service/customer.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Profile } from 'src/app/Models/profile.model';
-import { profileImage } from 'src/app/Models/profileImage.model';
+import { profileImage } from 'src/app/models/profileImage.model';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 

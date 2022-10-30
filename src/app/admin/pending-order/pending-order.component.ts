@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { GetAllWasher } from 'src/app/Models/getAllWasher';
+import { GetAllWasher } from 'src/app/models/getAllWasher';
 import { Order } from 'src/app/models/order';
 import { AdminService } from 'src/app/service/admin.service';
 import { acceptRequest } from 'src/app/Models/AcceptRequest.model';
@@ -62,36 +62,36 @@ export class PendingOrderComponent implements OnInit {
   }
 
   assignWasher(){
-    this.sendMailObj.to = this.pen[this.index].userMail;
-    this.sendMailObj.subject = "Wash Order has been accepted";
-    this.sendMailObj.message = `Hello Customer, this mail is to inform that your car wash order with orderId ${this.acceptRequestObj.orderId} has been accepted by a washer`;
+  //   this.sendMailObj.to = this.pen[this.index].userMail;
+  //   this.sendMailObj.subject = "Wash Order has been accepted";
+  //   this.sendMailObj.message = `Hello Customer, this mail is to inform that your car wash order with orderId ${this.acceptRequestObj.orderId} has been accepted by a washer`;
 
-    this.adminService.postWashRequest(this.acceptRequestObj)
-    .subscribe(res => {
-      Swal.fire({
-        icon: 'success',
-        title: 'Order has been accepted successfully.'
-        //footer: '<a href="">Why do I have this issue?</a>'
-      })
-      this.sendMail(this.sendMailObj);
-      let ref = document.getElementById('cancel');
-      ref?.click();
-      this.getOrders();
-    },
-    err => {
-      Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'Something went wrong!',
-        //footer: '<a href="">Why do I have this issue?</a>'
-      })
-    })
-  }
+  //   this.adminService.postWashRequest(this.acceptRequestObj)
+  //   .subscribe(res => {
+  //     Swal.fire({
+  //       icon: 'success',
+  //       title: 'Order has been accepted successfully.'
+  //       //footer: '<a href="">Why do I have this issue?</a>'
+  //     })
+  //     this.sendMail(this.sendMailObj);
+  //     let ref = document.getElementById('cancel');
+  //     ref?.click();
+  //     this.getOrders();
+  //   },
+  //   err => {
+  //     Swal.fire({
+  //       icon: 'error',
+  //       title: 'Oops...',
+  //       text: 'Something went wrong!',
+  //       //footer: '<a href="">Why do I have this issue?</a>'
+  //     })
+  //   })
+  // }
 
-  sendMail(email : any)
-  {
-    this.adminService.sendEmail(email)
-    .subscribe();
+  // sendMail(email : any)
+  // {
+  //   this.adminService.sendEmail(email)
+  //   .subscribe();
   }
 
 }

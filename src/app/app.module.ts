@@ -29,6 +29,7 @@ import { NgxPrintModule } from 'ngx-print';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,6 +45,7 @@ import { NgxPrintModule } from 'ngx-print';
     CurrentOrdersComponent,
     PastOrdersComponent,
     WasherNavbarComponent,
+
 
   ],
   imports: [

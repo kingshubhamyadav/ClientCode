@@ -56,7 +56,11 @@
       <small style="padding-right: 130px;" [class.d-none]="password.valid || password.untouched"
         class="text-danger">Password is required.</small>
       <button [disabled]="loginForm.form.invalid" type="button" (click)="login(user)" class="btn login-button mt-4">Sign In</button>
+      <div style="padding-top:12px">
+      <a href="/adminLogin">If Admin Login Here</a>
+    </div>
     </form>
+
   </div>
   <div class="overlay-container">
     <div class="overlay">
@@ -65,7 +69,9 @@
         <p>Enter your personal details and start your journey with us</p>
         <button type="button" routerLink="/register" class="ghost btn-primary btn-lg btn-block register-button">Register
         </button>
+
       </div>
+
     </div>
   </div>
 </div>

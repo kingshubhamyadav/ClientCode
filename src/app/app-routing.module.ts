@@ -31,6 +31,7 @@ import { AuthGuard } from './shared/auth.guard';
 import { CustomerGuard } from './shared/customer.guard';
 import { AdminGuard } from './shared/admin.guard';
 import { WasherGuard } from './shared/washer.guard';
+import { AdminLoginComponent } from './auth/admin.login/admin.login.component';
 
 const routes: Routes = [
   //customer
@@ -47,6 +48,7 @@ const routes: Routes = [
   {path:'aboutUs',component:AboutUsComponent,canActivate:[AuthGuard,CustomerGuard]},
   // {path:'contactUs',component:ContactUsComponent,canActivate:[AuthGuard,CustomerGuard]},
   //admin
+  {path:'adminLogin',component:AdminLoginComponent},
   {path:'adminHome',component:AdminHomeComponent,canActivate:[AuthGuard,AdminGuard]},
   {path:'adminNavbar',component:AdminNavbarComponent,canActivate:[AuthGuard,AdminGuard]},
   {path:'createPromocode',component:CreatePromocodeComponent,canActivate:[AuthGuard,AdminGuard]},
@@ -76,7 +78,7 @@ const routes: Routes = [
 export class AppRoutingModule { }
 export const routingComponents=[HomeComponent,RegisterComponent,LoginComponent,CheckoutComponent,AboutUsComponent,
   OrderHistoryComponent,AdminHomeComponent,AdminNavbarComponent,CreatePromocodeComponent,CreateServicesComponent,CreateWasherComponent,AllWasherComponent,
-  AllCustomerComponent,PendingOrderComponent,AllOrderComponent,PromocodeComponent,ProfileComponent,LeadersBaoardComponent,
+  AllCustomerComponent,PendingOrderComponent,AllOrderComponent,PromocodeComponent,ProfileComponent,LeadersBaoardComponent,AdminLoginComponent,
   WasherDashboardComponent, WasherProfileComponent, WashRequestsComponent, InvoiceGenerationComponent, WasherOrdersComponent, PageNotFoundComponent, InvoiceComponent]
 
 export const routingComponent = [WasherDashboardComponent, WasherProfileComponent, WashRequestsComponent, InvoiceGenerationComponent, WasherOrdersComponent, PageNotFoundComponent, CurrentOrdersComponent, PastOrdersComponent];

@@ -26,8 +26,15 @@ export class AuthService {
     {responseType: 'text'}
     );
   }
+  //for testing
   public weather(): Observable<string>{
     return this.http.get('https://localhost:7112/WeatherForecast',{responseType:'text'});
+  }
+//for admin login
+  public adminLogin(user: User): Observable<string>{
+    return this.http.post(this.baseApiUrl+'/Auth/AdminLogin',user,
+    {responseType: 'text'}
+    );
   }
 
 
