@@ -54,12 +54,13 @@ export class CheckoutComponent implements OnInit {
     });
   }
   checkoutInfo(checkout:Checkout){
+    console.log(checkout)
     this.checkout.userId= this.userId;
     this.checkout.washTypeId= Number(localStorage.getItem('washTypeId'));
     this.checkout.code= this.promo.code;
     this.checkout.washerUserId= Number(localStorage.getItem('washTypeId'));
     this.checkout.amountPaid=this.totalAmount.toString();
-    this.checkout.amountPaid=this.discount.toString();
+    this.checkout.totalDiscount=this.discount.toString();
     this.customrServices.checkoutInfo(checkout).subscribe({
       next: (info: Checkout) => {
         this.checkout = info;

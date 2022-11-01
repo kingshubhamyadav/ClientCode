@@ -14,6 +14,7 @@ export class InvoiceComponent implements OnInit {
   totalDiscount= Number(localStorage.getItem('totalDiscount'));
   serviceAmount=Number(localStorage.getItem('amountPaid'))+this.totalDiscount;
   totalAmount=Number(localStorage.getItem('amountPaid'));
+  dateAndTime=localStorage.getItem('dateWashInv')
 
   email=localStorage.getItem('email');
   phone=localStorage.getItem('phone');

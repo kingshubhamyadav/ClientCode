@@ -26,12 +26,11 @@ import { PendingOrderComponent } from './admin/pending-order/pending-order.compo
 import { AllOrderComponent } from './admin/all-order/all-order.component';
 import { PromocodeComponent } from './admin/promocode/promocode.component';
 import { ProfileComponent } from './customer/profile/profile.component';
-import { LeadersBaoardComponent } from './customer/leaders-baoard/leaders-baoard.component';
 import { AuthGuard } from './shared/auth.guard';
 import { CustomerGuard } from './shared/customer.guard';
 import { AdminGuard } from './shared/admin.guard';
 import { WasherGuard } from './shared/washer.guard';
-import { AdminLoginComponent } from './auth/admin.login/admin.login.component';
+import { AdminLoginComponent } from './admin.login/admin.login.component';
 
 const routes: Routes = [
   //customer
@@ -43,7 +42,6 @@ const routes: Routes = [
   {path:'orderHistory',component:OrderHistoryComponent,canActivate:[AuthGuard,CustomerGuard]},
   {path:'invoice',component:InvoiceComponent,canActivate:[AuthGuard,CustomerGuard]},
   {path:'profile',component:ProfileComponent,canActivate:[AuthGuard,CustomerGuard]},  //need to modify
-  {path:'leadersBoards',component:LeadersBaoardComponent,canActivate:[AuthGuard,CustomerGuard]},
 
   {path:'aboutUs',component:AboutUsComponent,canActivate:[AuthGuard,CustomerGuard]},
   // {path:'contactUs',component:ContactUsComponent,canActivate:[AuthGuard,CustomerGuard]},
@@ -78,7 +76,7 @@ const routes: Routes = [
 export class AppRoutingModule { }
 export const routingComponents=[HomeComponent,RegisterComponent,LoginComponent,CheckoutComponent,AboutUsComponent,
   OrderHistoryComponent,AdminHomeComponent,AdminNavbarComponent,CreatePromocodeComponent,CreateServicesComponent,CreateWasherComponent,AllWasherComponent,
-  AllCustomerComponent,PendingOrderComponent,AllOrderComponent,PromocodeComponent,ProfileComponent,LeadersBaoardComponent,AdminLoginComponent,
+  AllCustomerComponent,PendingOrderComponent,AllOrderComponent,PromocodeComponent,ProfileComponent,AdminLoginComponent,
   WasherDashboardComponent, WasherProfileComponent, WashRequestsComponent, InvoiceGenerationComponent, WasherOrdersComponent, PageNotFoundComponent, InvoiceComponent]
 
 export const routingComponent = [WasherDashboardComponent, WasherProfileComponent, WashRequestsComponent, InvoiceGenerationComponent, WasherOrdersComponent, PageNotFoundComponent, CurrentOrdersComponent, PastOrdersComponent];
