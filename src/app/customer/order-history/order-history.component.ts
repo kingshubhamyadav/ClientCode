@@ -23,6 +23,7 @@ export class OrderHistoryComponent implements OnInit {
     .subscribe({
       next:(orders)=>{
        this.orders=orders;
+       console.log(orders)
 
       },
       error:(response)=>{
@@ -42,6 +43,7 @@ invoice(index:number,orderIdInPayment:number){
     .subscribe({
       next:(orders)=>{
        this.orders=orders;
+       console.log(orders)
       },
 
     })

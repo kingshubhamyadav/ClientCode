@@ -4,7 +4,7 @@ import { WasherApiService } from 'src/app/Services/washer-api.service';
 import { Router } from '@angular/router';
 import { ConnectableObservable } from 'rxjs';
 import { acceptRequest } from 'src/app/Models/AcceptRequest.model';
-import { SendMail } from 'src/app/Models/sendMail.model';
+import { SendMail } from 'src/app/models/sendMail.model';
 import Swal from 'sweetalert2';
 
 @Component({

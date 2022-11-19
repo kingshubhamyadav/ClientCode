@@ -3,7 +3,7 @@ import { GetAllWasher } from 'src/app/models/getAllWasher';
 import { Order } from 'src/app/models/order';
 import { AdminService } from 'src/app/service/admin.service';
 import { acceptRequest } from 'src/app/Models/AcceptRequest.model';
-import { SendMail } from 'src/app/Models/sendMail.model';
+import { SendMail } from 'src/app/models/sendMail.model';
 import Swal from 'sweetalert2';
 
 @Component({
